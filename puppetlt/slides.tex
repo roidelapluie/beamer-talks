@@ -82,6 +82,7 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
         \item{Needs a cluster.conf w/ all the nodes}
         \item{Managed via ccs}
         \item{Will propagate the changes}
+        \item{EL6 only}
     \end{itemize}
 }
 \frame{%
@@ -89,7 +90,7 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
     \begin{itemize}
             \item{Messaging layer}
             \item{Controlled via CMAN}
-        \item{EL7 version takes over CMAN}
+        \item{EL6 and EL7 different versions}
     \end{itemize}
 }
 \picSlideBottom{pl-forge.png}{}
@@ -157,6 +158,13 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
         \Huge{}\ctr{Leadership}
     \end{center}
 }
+\frame{%
+    \frametitle{Challenges}
+    \begin{center}
+        \Huge{}\ctr{Community}
+    \end{center}
+}
+
 
 \thankyouSlide
 \contactSlide
