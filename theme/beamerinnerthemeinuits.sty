@@ -1,0 +1,170 @@
+\mode<presentation>
+
+
+
+% Font for the presentation title
+\newfontfamily{\os}{Roboto}
+\setbeamerfont{frametitle}{family=\os}
+\setbeamerfont{itemize/enumerate body}{family=\os,size=\Large}
+\setbeamerfont{itemize item}{family=\os,size=\Huge}
+\setbeamerfont{normal text}{family=\os}
+\setbeamerfont{title}{family=\os}
+\setbeamerfont{title page}{family=\os}
+\defbeamertemplate{itemize item}{bigcircle}{\LARGE\raise-0.05cm\hbox{\textbullet}}
+
+
+\pgfdeclareimage[width=\paperwidth,height=\paperheight]{background}{background.png}
+\renewcommand{\insertslideintonotes}[1]{{%
+        \begin{pgfpicture}{0cm}{0cm}{#1\paperwidth}{#1\paperheight}
+            \begin{pgflowlevelscope}{\pgftransformscale{#1}}%
+                {\pgftransformshift{\pgfpointorigin}\pgftext[left,bottom]{\pgfuseimage{background}}}
+                \color{normal text.fg}
+                {\pgftransformshift{\pgfpoint{\beamer@origlmargin}{\footheight}}\pgftext[left,bottom]{\copy\beamer@frameboxcopy}}
+            \end{pgflowlevelscope}
+        \end{pgfpicture}%
+}}
+
+\setbeamertemplate{background}{%
+
+    \begin{tikzpicture}[every node/.style={inner sep=0,outer sep=0}]
+        \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%        \node at (0,0) {xx}
+        \node[anchor=south west] at (0,0) {\includegraphics[width=\the\paperwidth,height=\the\paperheight]{background.png}};
+        \ifnum\thepage=1\relax
+        \node[anchor=north west] at (0,\the\paperheight) {\includegraphics[width=\the\paperwidth]{loup.jpg}};
+        \fi
+         \FPsub{\minuspagenum}{\insertframenumber}{1};
+        \FPsub{\minuspagetotal}{\inserttotalframenumber}{1};
+        \ifnum\inserttotalframenumber>1\relax
+         \FPdiv{\progress}{\minuspagenum}{\minuspagetotal};
+         \draw[anchor=south west, line width=5pt, inuits!20!black] (0,0pt) -- (\paperwidth,0pt);
+         \draw[anchor=south west, line width=5pt, inuits] (0,0pt) -- (\progress\paperwidth,0pt);
+         \fi
+        \ifx\bgimg\empty
+        \else
+           \draw[anchor=south west] (0\paperwidth,\videohead) node {\includegraphics[width=\paperwidth,height=\videosize]{\bgimg}};
+        \fi
+    \end{tikzpicture}
+
+%    \begin{tikzpicture}
+%\ifnum\thepage>1\relax%
+%        \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%        \else
+%        \useasboundingbox[fill=black!20] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+%\fi
+%        \shade[top color=black, bottom color=black!40,opacity=1] (0, \the\paperheight) rectangle (\the\paperwidth,0.9\paperheight);
+%        \draw[line width=2pt, \titlecolorbg] (0, 0.9\paperheight) -- (\the\paperwidth,0.9\paperheight);
+%        \node[anchor=west,white] (juc) at (0.3,0.95\paperheight) {\fontspec{Georgia}Jenkins User Conference Europe} ;
+%        \ifx\insertsection\empty\else\draw[white]  (0.9\paperwidth,0.95\paperheight) node {\tiny \#jenkinsconf}\fi;
+%        \draw[anchor=east]  (0.98\paperwidth,0.05\paperheight) node {\small\color{jenkinsdarkblue}\ifx\insertsection\empty\#jenkinsconf\else\insertsection{}\ifx\insertsubsection\empty\else{\color{jenkinsblue}/\color{jenkinslightblue}\insertsubsection{}}\fi\fi};
+%%        \setlength{presstatus}{\paperwidth}
+%        \FPsub{\minuspagenum}{\insertframenumber}{1};
+%        \FPsub{\minuspagetotal}{\inserttotalframenumber}{1};
+%        \FPdiv\progress\minuspagenum\minuspagetotal;
+%        \draw[line width=2pt, jenkinslightblue] (0, 0pt) -- (\paperwidth,0pt);
+%        \draw[line width=2pt, jenkinsdarkblue] (0, 0pt) -- (\progress\paperwidth,0pt);
+%%\ifnum\thepage>1\relax%
+%        %        \node[anchor=east,black!40,font=\bfseries] (juc) at (8,0.15\paperheight) {\#jenkinsconf} ;
+%%
+%%\fi
+%\ifnum\thepage>1\relax%
+%%\begin{picture}(0,0)(0,0)\put(-80,130){\includegraphics[width=2.0cm]{\logoimg}
+%\ifx\logoimg\empty\else
+%        \draw[anchor=north east] (0.98\paperwidth,0.78\paperheight) node {\includegraphics[width=2cm]{\logoimg}};
+%        \fi
+%\else
+%        %\begin{picture}(0,0)(0,0)\put(-340,110){\includegraphics[width=2.5cm]{image1.png}}
+%        \draw[anchor=north west] (0.05\paperwidth,0.80\paperheight) node {\includegraphics[width=2.5cm]{image1.png}};
+%\fi
+%    \end{tikzpicture}
+%    \begin{textblock}{260mm}[1,1](182,251)
+ %   \end{textblock}
+}
+
+% Title page
+\defbeamertemplate*{title page}{inuits}[1][]{%
+        \vspace{3.5cm}
+    \begin{beamercolorbox}{title page header}
+        \begin{center}
+            \textbf{\contour{black}{\inserttitle}}\par%
+        \end{center}
+    \end{beamercolorbox}%
+    \if\insertsubtitle\empty\else
+    \vspace{-0.7cm}
+    \begin{beamercolorbox}{title page header}
+        \begin{center}
+            \textbf{\contour{black}{\insertsubtitle}}\par%
+        \end{center}
+    \end{beamercolorbox}%
+    \vspace{-0.3cm}
+    \fi
+    \begin{beamercolorbox}{author}
+        \begin{center}
+            \insertauthor
+        \end{center}
+    \end{beamercolorbox}
+    \if\insertsubtitle\empty\else
+    \vspace{-0.4cm}
+    \fi
+    \vspace{0.01cm}
+    \begin{beamercolorbox}{date}
+        \begin{center}
+           \insertdate
+        \end{center}
+    \end{beamercolorbox}
+    \vfill
+}
+
+
+\defbeamertemplate*{frametitle}{inuits}[1][]
+{%
+    \vspace{0.095\paperheight}%
+        \shadowrgb{0,0,0}
+    \begin{center}
+        \textbf{\huge{\contour{black}{\insertframetitle}}
+    }
+    \end{center}
+    \ifx\insertframesubtitle\empty\else
+    \begin{center}
+        \LARGE\textbf{\color{white}\contour{black}{\insertframesubtitle}}
+    \end{center}
+    \fi
+}
+%    \vspace{0.095\paperheight}%
+%    \begin{beamercolorbox}[wd=\paperwidth,ht=0.1\paperheight]{frametitle} 
+%        \begin{tikzpicture}
+%           \useasboundingbox[fill=\titlecolorbg] (0,0) rectangle(\the\paperwidth,0.1\paperheight);
+%            \ifx\insertframesubtitle\empty%
+%            {\node[anchor=west, \titlecolorfg,font=\large] at (1,0.05\paperheight){\insertframetitle};}
+%            \else%
+%            {\node[anchor= west, \titlecolorfg,font=\large] at (1,0.81){\insertframetitle};%
+%            \node[anchor= west, \titlecolorfg,font=\small] at (1,0.41){\insertframesubtitle};}%
+%            \fi
+%        \end{tikzpicture}
+%    \end{beamercolorbox}
+%}
+%\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=2.0ex]{cosbullet.png}}
+\setbeamertemplate{itemize item}[bigcircle]
+
+%\defbeamertemplate{itemize item}{image}{\small\includegraphics[height=2.0ex]{green.png}}
+%\defbeamertemplate{itemize subitem}{image}{\small\includegraphics[height=2.0ex]{grey.png}}
+%\newcommand{\redball}{\small\includegraphics[height=2.0ex]{red.png}}
+%\setbeamertemplate{itemize subitem}[image]
+
+%\setbeamertemplate{itemize item}[image]
+
+
+%\newenvironment<>{jucblock}[1]{\setbeamercolor{block body}{fg=black,bg=jenkinslightgrey}\setbeamercolor{block title}{fg=white,bg=jenkinsblue}\begin{block}#2{#1}}{\end{block}}
+%\newenvironment<>{jucblock}[1]{\begin{tcolorbox}[colback=jenkinslightgrey,colframe=jenkinsblue,title=#1]}{\end{tcolorbox}}
+%\setbeamerfont{alerted text}{series=\bfseries}
+\defbeamertemplate*{note page}{inuits}
+{%
+    \begin{center}
+\insertslideintonotes{0.6}
+    \end{center}
+\insertnote
+}
+
+
+\mode
+<all>

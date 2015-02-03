@@ -1,0 +1,23 @@
+\mode<presentation>
+
+% Requirement
+\RequirePackage{tikz}
+\RequirePackage{fp}
+\RequirePackage[absolute]{textpos}
+\RequirePackage[listings,theorems]{tcolorbox}
+\RequirePackage{shadowtext}
+\RequirePackage{fontspec}
+\RequirePackage{pgfpages}
+
+% Settings
+\useinnertheme{inuits}
+\useoutertheme{inuits}
+\usecolortheme{inuits}
+
+\DeclareOptionBeamer{shadow}[false]{}
+%\usefonttheme{Roboto} % using non standard fonts for beamer
+%\renewcommand{\familydefault}{Roboto}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]  
+
+\mode<all>
