@@ -73,6 +73,25 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
     op monitor interval="30s"
 \end{verbatim}
 \end{frame}
+\frame{%
+    \frametitle{CMAN}
+    \begin{itemize}
+            \item{Manages membership and quorum}
+            \item{Notifies pacemaker when something changes}
+        \item{Starts and manages corosync}
+        \item{Needs a cluster.conf that contains all the nodes}
+        \item{Managed via ccs}
+        \item{Will propagate the changes}
+    \end{itemize}
+}
+\frame{%
+    \frametitle{Corosync}
+    \begin{itemize}
+            \item{Messaging layer}
+            \item{Controlled via CMAN}
+        \item{EL7 version takes over CMAN}
+    \end{itemize}
+}
 \picSlideBottom{pl-forge.png}{}
 \picSlideBottom{pl-cs.png}{}
 \frame{%
