@@ -100,11 +100,10 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
     \begin{itemize}
         \item{Worked with the "crm" command}
         \item{Which was removed from EL 6.4}
-        \item{People got it as external RPM's from suse dev}
+        \item{People got the RPM from suse dev}
         \item{RH pushing to use pcs instead}
-        \item{jhoblitt started to integrated pcs in the module}
+        \item{jhoblitt integrated pcs in the module}
         \item{I ended that work}
-        \item{Still a lot to do}
     \end{itemize}
 
 }
@@ -119,6 +118,17 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
 }
 \frame{%
 
+    \frametitle{Current Status}
+    \begin{itemize}
+        \item{Two providers: pcs crm}
+        \item{Bugs bugs bugs}
+        \item{Lack of good testing}
+        \item{Lack of leadership}
+    \end{itemize}
+
+}
+\frame{%
+
     \frametitle{Challenges}
     \begin{itemize}
         \item{New way to work with EL7}
@@ -126,20 +136,9 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
         \item{Keeping suse compat}
         \item{Keeping el5/6 compat?}
         \item{Rename the module?}
-        \item{Close oldest PR}
-    \end{itemize}
-
-}
-\frame{%
-
-    \frametitle{And after}
-    \begin{itemize}
+        \item{Close old PR}
         \item{Beaker?}
-        \item{New version of corosync}
-        \item{Keeping suse compat}
-        \item{Keeping el5/6 compat?}
-        \item{Rename the module?}
-        \item{Close oldest PR}
+        \item{}
     \end{itemize}
 
 }
