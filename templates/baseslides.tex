@@ -1,15 +1,15 @@
 
 
-\newcommand{\thankyouSlide}[1][None]{%
+\newcommand{\thankyouSlide}[1][]{%
     \begin{frame}
         \frametitle{Thank you}
         \begin{center}
             \Huge
             \ctr{Any question?}
         \end{center}
-        \ifthenelse{\equal{#1}{None}}{}{%
+        \ifthenelse{\equal{#1}{}}{}{%
             \begin{center}
-                \ctr{Thanks to #1}
+                \ctr{#1}
             \end{center}
         }
     \end{frame}
