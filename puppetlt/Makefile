@@ -8,16 +8,16 @@ commit:
 presentation:
 	xelatex presentation.tex
 	xelatex presentation.tex
-	rm *.aux *.log *.nav *.out *.snm *.toc *.vrb || true
+	rm *.aux *.log *.nav *.out *.snm *.toc *.vrb *.xwm || true
 
 
 handout:
 	xelatex handout.tex
 	xelatex handout.tex
-	rm *.aux *.log *.nav *.out *.snm *.toc *.vrb || true
+	rm *.aux *.log *.nav *.out *.snm *.toc *.vrb *.xwm || true
 
 clean:
-	rm *.pdf *.aux *.log *.nav *.out *.snm *.toc *.vrb || true
+	rm *.pdf *.aux *.log *.nav *.out *.snm *.toc *.vrb *.xwm || true
 
 
 mupdf-presentation: presentation
