@@ -1,4 +1,22 @@
+\newcommand{\hugePic}[1]{\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{#1}};}
 
+\newcommand{\picSlideBottom}[2]{%
+    \frame[b]{%
+        \hugePic{#1}
+        #2
+    }
+}
+
+\newcommand{\inuitsSlide}{%
+    \picSlideBottom{../images/inuits-vid.png}{%
+        \begin{center}
+            \Huge{}
+            \inuits{}
+            \color{black}
+            inuits\LARGE{}.eu
+        \end{center}
+    }
+}
 
 \newcommand{\thankyouSlide}[1][]{%
     \begin{frame}
