@@ -30,6 +30,49 @@
 \frame[plain]{%
 \centerline{\includegraphics[height=0.9\paperheight]{files/4.png}}\color{grey}http://clusterlabs.org/wiki (GFDL 1.2 licence)
 }
+\frame{%
+    \frametitle{Pacemaker}
+    \begin{itemize}
+            \item{It is the brain}
+        \item{Decides what to do, when}
+        \item{Gets information from ressources}
+        \item{Depends on messaging and cluster manager}
+        \item{Does not require shared storage}
+    \end{itemize}
+}
+\frame{%
+    \frametitle{Decisions}
+    \begin{itemize}
+        \item{A node fails, now what}
+        \item{A service fails, now what}
+        \item{Restart? Move?}
+        \item{Needs to be quick and without intervention}
+        \item{Scores, policies}
+    \end{itemize}
+}
+\frame{%
+    \frametitle{CIB}
+    \begin{itemize}
+        \item{Cluster Information Base}
+        \item{XML shared accross the cluster}
+        \item{Updated using "pcs"}
+        \item{Contains knowledge about the cluster}
+    \end{itemize}
+}
+
+\begin{frame}[fragile]
+    \frametitle{Primitives}
+    \begin{itemize}
+        \xitem{Service, Ip address, mountpoint,\dots}
+        \xitem{Base bricks of a cluster}
+        \xitem{Get a lot of parameters}
+    \end{itemize}
+    \begin{verbatim}
+primitive ClusterIP ocf:heartbeat:IPaddr2
+    params ip="192.168.122.101" cidr_netmask="32"
+    op monitor interval="30s"
+\end{verbatim}
+\end{frame}
 \picSlideBottom{pl-forge.png}{}
 \picSlideBottom{pl-cs.png}{}
 \frame{%
