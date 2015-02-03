@@ -11,5 +11,135 @@
 \definecolor{darkred}{rgb}{0.5,0,0}
 \definecolor{sgy}{HTML}{9FBFA8}
 
+\newcommand{\minuscule}{\fontsize{4}{1}\selectfont}
+\usepackage{soul}
+\usepackage{pstricks}
+
+\usepackage{pst-3d,pst-text}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+%
+\newcommand\pro{\item[\color{green}$+$]}
+\newcommand\con{\item[\color{red}$-$]}
+%
+%
+%\input{high.tex}
+\setbeamertemplate{itemize item}[circle]
+\definecolor{OliveGreen}{RGB}{0,100,0}
+\definecolor{OliveGreen}{RGB}{0,100,0}
+\definecolor{grey}{RGB}{150,150,150}
+\definecolor{darkgrey}{RGB}{100,100,100}
+\definecolor{orange}{RGB}{232,157,62}
+\definecolor{inuits}{RGB}{153,153,255}
+\usepackage{calc}
+\newlength{\videosize}
+\newlength{\videohead}
+\setlength{\videosize}{.46\paperwidth}
+\setlength{\videohead}{\paperheight/2-\videosize/2}
+\setlength{\XeTeXLinkMargin}{0pt}
+\newcommand{\inuits}{\fontspec{Arjowiggins Inuit}}
+\usepackage{listings}
+\newfontfamily{\fsfont}{Fantasque Sans Mono}
+%\renewcommand*{\texttt}[1]{\fsfont#1}
+%\newfontfamily{\km}{Klavica}
+\lstset{basicstyle=\footnotesize\fsfont,breaklines=true}
+\lstset{commentstyle=\textbf}
+
+\usepackage{contour}
+%
+%\newfontfamily{\os}{Roboto}
+%\renewcommand{\familydefault}{\os}
+%%\newcommand{\putat}[3]{\begin{picture}(0,0)(0,0)\put(#1,#2){#3}\end{picture}}
+%
+
+\newcommand{\videoframesx}[2]{%
+    \mode<handout>{%
+        \def\bgimg{vids/#1-2.png}
+        \frame{%
+ %           \frametitle{#2}
+        }
+        \def\bgimg{}
+    }
+    \mode<beamer|second|trans|article>{%
+        \def\bgimg{vids/#1-1.png}
+        \frame{%
+  %          \frametitle{#2}
+            \begin{textblock*}{\paperwidth}(0\paperwidth,\videohead)%\FPadd{\paperheight}{2pt})%}{\FPdiv{.47\paperwidth}{2}})%
+                \href{run:vids/#1-1.avi?autostart}{\XeTeXLinkBox{\includegraphics[height=\videosize,width=\paperwidth]{vids/#1-1.png}}}
+            \end{textblock*}
+        }
+        \def\bgimg{}
+    }
+}
+\newcommand{\videoframes}[2]{%
+    \mode<handout>{%
+        \def\bgimg{vids/#1-2.png}
+        \frame{%
+ %           \frametitle{#2}
+        }
+        \def\bgimg{vids/#1-3.png}
+        \frame{%
+  %          \frametitle{#2}
+        }
+        \def\bgimg{}
+    }
+    \mode<beamer|second|trans|article>{%
+        \def\bgimg{vids/#1-1.png}
+        \frame{%
+  %          \frametitle{#2}
+            \begin{textblock*}{\paperwidth}(0\paperwidth,\videohead)%\FPadd{\paperheight}{2pt})%}{\FPdiv{.47\paperwidth}{2}})%
+                \href{run:vids/#1-1.avi?autostart}{\XeTeXLinkBox{\includegraphics[height=\videosize,width=\paperwidth]{vids/#1-1.png}}}
+            \end{textblock*}
+        }
+        \def\bgimg{}
+    }
+}
+
+\newcommand{\videoframe}[2]{%
+    \mode<handout>{%
+        \def\bgimg{vids/#1-2.png}
+        \frame{%
+ %           \frametitle{#2}
+        }
+        \def\bgimg{vids/#1-3.png}
+        \frame{%
+  %          \frametitle{#2}
+        }
+        \def\bgimg{}
+    }
+    \mode<beamer|second|trans|article>{%
+        \def\bgimg{vids/#1-1.png}
+        \frame{%
+  %          \frametitle{#2}
+            \begin{textblock*}{\paperwidth}(0\paperwidth,\videohead)%\FPadd{\paperheight}{2pt})%}{\FPdiv{.47\paperwidth}{2}})%
+                \href{run:vids/#1-1.avi?autostart}{\XeTeXLinkBox{\includegraphics[height=\videosize,width=\paperwidth]{vids/#1-1.png}}}
+            \end{textblock*}
+        }
+       \def\bgimg{vids/#1-2.png}
+        \frame{%
+  %          \frametitle{#2}
+            \begin{textblock*}{\paperwidth}(0\paperwidth,\videohead)%\FPadd{\paperheight}{2pt})%}{\FPdiv{.47\paperwidth}{2}})%
+                \href{run:vids/#1-2.avi?autostart}{\XeTeXLinkBox{\includegraphics[height=\videosize,width=\paperwidth]{vids/#1-2.png}}}
+            \end{textblock*}
+        }
+        \def\bgimg{}
+    }
+}
+
+
+\def\bgimg{}
+%
+\usepackage{pgfpages}
+%\setbeameroption{show notes on second screen}
+
+\renewcommand\pgfsetupphysicalpagesizes{%
+        \pdfpagewidth\pgfphysicalwidth\pdfpageheight\pgfphysicalheight%
+    }
+
+\let\olditem\item
+\newcommand{\largepic}[1]{\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{#1}};}
+\newcommand{\ctr}[1]{\contour{black}{#1}}
+\renewcommand{\item}[1]{\olditem{\ctr{#1}}}
 
 \input{../templates/baseslides.tex}
