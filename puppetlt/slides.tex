@@ -41,16 +41,6 @@
     \end{itemize}
 }
 \frame{%
-    \frametitle{Decisions}
-    \begin{itemize}
-        \item{A node fails, now what}
-        \item{A service fails, now what}
-        \item{Restart? Move?}
-        \item{Needs to be quick and without intervention}
-        \item{Scores, policies}
-    \end{itemize}
-}
-\frame{%
     \frametitle{CIB}
     \begin{itemize}
         \item{Cluster Information Base}
@@ -61,7 +51,7 @@
 }
 
 \begin{frame}[fragile]
-    \frametitle{Primitives}
+    \frametitle{Primitives (puppet type)}
     \begin{itemize}
         \item{Service, Ip address, mountpoint,\dots}
         \item{Base bricks of a cluster}
@@ -76,13 +66,9 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
 \frame{%
     \frametitle{CMAN}
     \begin{itemize}
-            \item{Manages membership and quorum}
-            \item{Notifies pacemaker on changes}
-        \item{Starts and manages corosync}
-        \item{Needs a cluster.conf w/ all the nodes}
-        \item{Managed via ccs}
-        \item{Will propagate the changes}
+        \item{Manages membership and quorum}
         \item{EL6 only}
+        \item{kbon/puppet-pacemaker}
     \end{itemize}
 }
 \frame{%
@@ -90,7 +76,8 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
     \begin{itemize}
             \item{Messaging layer}
             \item{Controlled via CMAN}
-        \item{EL6 and EL7 different versions}
+        \item{EL6 and EL7: different versions}
+        \item{kbon/puppet-cman}
     \end{itemize}
 }
 \picSlideBottom{pl-forge.png}{}
@@ -101,7 +88,7 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
     \begin{itemize}
         \item{Worked with the "crm" command}
         \item{Which was removed from EL 6.4}
-        \item{People got the RPM from suse dev}
+        \item{People got the crm RPM from suse dev}
         \item{RH pushing to use pcs instead}
         \item{jhoblitt integrated pcs in the module}
         \item{I ended that work}
@@ -110,10 +97,12 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
 }
 \frame{%
 
-    \frametitle{Besides}
+    \frametitle{Current Cluster}
     \begin{itemize}
-        \item{kbon/puppet-cman}
-        \item{kbon/puppet-pacemaker}
+        \item{3 stacks}
+        \item{crm+corosync}
+        \item{pcs+cman+corosync}
+        \item{pcs+corosync}
     \end{itemize}
 
 }
@@ -124,14 +113,20 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
         \item{Two providers: pcs crm}
         \item{Bugs bugs bugs}
         \item{Lack of good testing}
-        \item{Lack of leadership}
+        \item{Lack of direction}
     \end{itemize}
 
 }
 \frame{%
     \frametitle{Challenges}
     \begin{center}
-        \Huge{}\ctr{EL7}
+        \Huge{}\ctr{Pull requests}
+    \end{center}
+}
+\frame{%
+    \frametitle{Challenges}
+    \begin{center}
+        \Huge{}\ctr{EL7 (corosync 2)}
     \end{center}
 }
 \frame{%
@@ -149,13 +144,7 @@ primitive ClusterIP ocf:heartbeat:IPaddr2
 \frame{%
     \frametitle{Challenges}
     \begin{center}
-        \Huge{}\ctr{beaker}
-    \end{center}
-}
-\frame{%
-    \frametitle{Challenges}
-    \begin{center}
-        \Huge{}\ctr{Leadership}
+        \Huge{}\ctr{Testing (beaker?)}
     \end{center}
 }
 \frame{%
