@@ -70,6 +70,16 @@
 \item Culture, Automation, Monitoring, Sharing
 \end{iframe}
 
+%TODO Automation
+
+%TODO - SHIP YOUR APPLICATION USING PACKAGES
+%TODO - But also dependencies
+
+%TODO - Simplify installation guide
+% Simple requirements (less)
+% Puppet
+
+
 \frame[b]{%
     \largepic{puppet.jpg}
     %\sethlcolor{black}
@@ -105,9 +115,100 @@
 \begin{frame}
     \frametitle{Tri-state}
 
-    \#TODO
+    %TODO
 
 \end{frame}
+
+% TODO Write nice puppet modules
+% Follow Best practices
+% Live on the edge
+
+% TODO Pick the best external puppet modules
+% Puppetlabs supported?
+% upstream supported?
+% you do not want bad code in your SW why in your PC?
+
+% TODO Contribute back
+% Not your core business
+% You get the code, improve and redistribute
+% "Peer review, tests"
+
+% TODO Puppet server master ou masterless
+% Puppet server is the future
+% Need good isolation for your puppet server
+% Certificates
+% Scale
+
+
+% TODO Pupper Server advantages
+% History of reports, changes
+% Enforcement during time
+% Easier upgrades
+% Puppet DB!
+
+% TODO Masterless advantages
+% No need for root daemons
+% One Shot, no client/master footprint
+% You still get the report
+
+% TODO Puppet DB
+% Get the facts
+% Get the reports
+% Light dashboards
+% Custom queries
+% Exported resources
+
+
+% TODO packaging/versioning
+% Put your puppet code with your application
+% version it the same way
+% deliver together
+% Data -> hiera
+
+% TODO Puppet code flexibility
+% example with mysql
+% example with create_resources
+
+% TODO Working with pre existing puppet
+% custom environment
+% No fantasy
+% Recognized modules
+% Subdirectory in hiera too
+% Watch out exported resources
+
+% TODO Hiera
+% Data
+% Only thing to change between customers
+% Should be flexible but not too much
+
+% TODO Security
+% No app on Puppet server
+% Puppet server behind a proxy
+% No autosign
+% basic security stuffs
+% Integrate with external CA
+% Do not expose puppet db etc
+% maybe a schema here
+
+% TODO benefits
+% From CI to QA
+% From Developer to Tester
+% Also for demos
+
+% TODO to be careful with
+% Custom facts
+% Custom functions
+% Upstream bugs?
+
+% TODO Upgrades
+% Puppet is declartive
+% Example or resource purges
+% Should work in one run
+% important that puppetcode matches your app
+
+
+% screenshot dash baord
+
 
 
 \thankyouSlide
