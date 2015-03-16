@@ -161,8 +161,49 @@
 \end{frame}
 
 \begin{iframe}[Yes, no or noop]
+\item Include or not each class
+\item You can put a whole class in no-op
 \item{\texttt{include myapp\_os}}
-\item{\texttt{class \{'myapp\_os': noop => true\}}}
+\item{\texttt{class \{'myapp\_os': noop => \$manage\_os,\}}}
+\end{iframe}
+
+\CenterSlide{Puppet Modules}
+
+\begin{iframe}[External modules]
+\item Pick the best ones
+\item Puppetlabs modules
+\item Upstream modules
+\item Modules active on Github
+\item Forge rating
+\item Testing, doc
+\item Modules that fit your usecase
+\end{iframe}
+
+\begin{frame}\LARGE Review the modules you plan to include. You do not want bad code in your app, why would you want it in the code that deploys your app?\end{frame}
+
+\begin{iframe}[Contribute back]
+\item Get feedback (peer review)
+\item Easier to maintain in long term
+\item Forces you to write tests
+\item Help other people
+\item Puppet is not your core business
+\end{iframe}
+
+\CenterSlide{Your modules}
+
+\begin{iframe}
+\item Everyone has write access
+\item Follow code standards (puppet-lint)
+\item Be future-proof
+\item Separation between code and data
+\end{iframe}
+
+\CenterSlide{Your Tree}
+\begin{iframe}
+\item Your tree is next to your app code
+\item Submodules of your app
+\item Gets the same version number
+\item Contains the right parameters
 \end{iframe}
 
 % TODO Write nice puppet modules
