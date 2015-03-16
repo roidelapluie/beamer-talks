@@ -24,6 +24,17 @@
 \item Stateless software
 \item Scalable daemons
 \end{iframe}
+\begin{frame}
+    \frametitle{Distributing Software}
+    \begin{itemize}\pause
+        \item {Plain FTP (+SCM)}\pause
+        \item {Tarball}\pause
+        \item {Self-extracting tarball}\pause
+        \item {curl|bash}\pause
+        \item{Containers? What's inside?}\pause
+        \item {Packages (.deb,~.rpm,\dots)}
+    \end{itemize}
+\end{frame}
 \frame[b]{%
     \largepic{entreprise.jpg}
     \begin{center}\Huge{}\ctr{Real World}\end{center}
@@ -73,8 +84,26 @@
 \end{iframe}
 
 \CenterSlide{Introduction}
-\CenterSlide{Introduction}
+\begin{frame}
+    \frametitle{Packaging}
+    \begin{itemize}
+        \item {Consistency checks, file lists}
+        \item {Dependencies resolving}
+        \item {Repositories}
+        \item {GPG-Signing}
+        \item {Lots of tools}
+        \item {Versioning}
+        \item {Unique artifacts, reproducible build}
+        \item{CfgMgmt integration (Puppet, Chef\dots)}
+    \end{itemize}
+\end{frame}
 
+\begin{iframe}[Dependencies]
+\item{Prefer distro packages}
+\item{Upstream packages}
+\item{Reliable repos (EPEL?)}
+\item{More dependencies = more work}
+\end{iframe}
 %TODO Automation
 
 %TODO - SHIP YOUR APPLICATION USING PACKAGES
