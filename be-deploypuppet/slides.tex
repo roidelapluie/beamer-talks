@@ -131,16 +131,18 @@
     %\sethlcolor{black}
     \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/jimmcd/4859841581}
 }
+
 \begin{iframe}[Puppet]
-\item Widely used Automation tools
-\item Client/Server mode
-\item Standalone mode
-\item Declarative
+\item Widely used Automation tool\pause
+\item Very mature\pause
+\item Client/Server mode\pause
+\item Standalone mode\pause
+\item Declarative\pause
 \item Scales
 \end{iframe}
 
 \begin{frame}
-    \frametitle{The onion}
+    \frametitle{What to automate?}
     \huge
     Application\\
     Reverse Proxy / Databases\\
@@ -158,12 +160,10 @@
     \huge Use separate meta-modules for OS, Dependencies, Monitoring, Application\dots{} And include them only of needed.
 \end{frame}
 
-\begin{frame}
-    \frametitle{Tri-state}
-
-    %TODO
-
-\end{frame}
+\begin{iframe}[Yes, no or noop]
+\item{\texttt{include myapp\_os}}
+\item{\texttt{class \{'myapp\_os': noop => true\}}}
+\end{iframe}
 
 % TODO Write nice puppet modules
 % Follow Best practices
