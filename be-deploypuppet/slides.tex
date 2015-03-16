@@ -206,44 +206,57 @@
 \item Contains the right parameters
 \end{iframe}
 
-% TODO Write nice puppet modules
-% Follow Best practices
-% Live on the edge
+\CenterSlide{Agent or Masterless}
 
-% TODO Pick the best external puppet modules
-% Puppetlabs supported?
-% upstream supported?
-% you do not want bad code in your SW why in your PC?
+\begin{iframe}[Agent or masterless]
+\item Puppet has 2 modes
+\item Pull your catalog
+\item Apply it from files
+\item Both have advantages
+\item Depends on what you want
+\end{iframe}
+\begin{iframe}[Masterless]
+\item One-time run
+\item No daemon running
+\item No need for a Puppet master
+\item No exported resources
+\item No PuppetDB
+\end{iframe}
+\begin{iframe}[Puppet agent]
+\item Run every X time
+\item Sanity check
+\item Requires one master
+\item Puppet daemon running
+\item Reports sent to the master
+\end{iframe}
+\begin{iframe}[PuppetDB]
+\item Requires a master
+\item Stores facts and reports
+\item Easy to query
+\item Dashboards available
+\item Exported resources
+\end{iframe}
+\begin{iframe}[Security]
+\item Puppet agent runs as root
+\item Not the master
+\item Isolate the master
+\item Puppet reports show what changes in time
+\item And detects problems earlier
+\end{iframe}
+\begin{iframe}[Security - Master/Server]
+\item Do not use autosign
+\item You can rely on external CA
+\item Put a reverse proxy (even for server)
+\item Isolate the service from the application
+\end{iframe}
 
-% TODO Contribute back
-% Not your core business
-% You get the code, improve and redistribute
-% "Peer review, tests"
+\CenterSlide{Hiera}
 
-% TODO Puppet server master ou masterless
-% Puppet server is the future
-% Need good isolation for your puppet server
-% Certificates
-% Scale
-
-% TODO Pupper Server advantages
-% History of reports, changes
-% Enforcement during time
-% Easier upgrades
-% Puppet DB!
-
-% TODO Masterless advantages
-% No need for root daemons
-% One Shot, no client/master footprint
-% You still get the report
-
-% TODO Puppet DB
-% Get the facts
-% Get the reports
-% Light dashboards
-% Custom queries
-% Exported resources
-
+\begin{iframe}
+\item Data separation
+\item Put the data on your main class
+\item Use 
+\end{iframe}
 
 % TODO packaging/versioning
 % Put your puppet code with your application
