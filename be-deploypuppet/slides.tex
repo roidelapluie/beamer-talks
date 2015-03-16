@@ -248,85 +248,65 @@
 \item You can rely on external CA
 \item Put a reverse proxy (even for server)
 \item Isolate the service from the application
+\item PuppetDB only listens to Loopback
 \end{iframe}
 
 \CenterSlide{Hiera}
 
-\begin{iframe}
+\begin{iframe}[Hiera]
 \item Data separation
-\item Put the data on your main class
-\item Use 
+\item You classes should have a stable API
+\item Your main class dispatches to other modules
+\item Use functions:
+\begin{itemize}
+    \item create\_resource
+    \item mysql\_deepmerge
+\end{itemize}
+\end{iframe}
+\begin{iframe}[Automatic Parameter Lookup]
+\item \texttt{class::param: "foobar"}
+\item Available in Puppet 3+
+\item Should be avoided (obscurification)
+\item Nice to have for edge cases
 \end{iframe}
 
-% TODO packaging/versioning
-% Put your puppet code with your application
-% version it the same way
-% deliver together
-% Data -> hiera
+\CenterSlide{Pre Existing Puppet}
 
-% TODO Puppet code flexibility
-% example with mysql
-% example with create_resources
+\begin{iframe}[Pre Existing Puppet]
+\item There might be a puppet setup
+\item Work in a separated environment
+\item Puppet hieradata in a subdirectory
+\item Prefix your custom functions
+\item Be careful with exported resources
+\end{iframe}
 
-% TODO Working with pre existing puppet
-% custom environment
-% No fantasy
-% Recognized modules
-% Subdirectory in hiera too
-% Watch out exported resources
+\centerSlide{Conclusion}
+\begin{iframe}[Shipping with puppet code]
+\item Everyone gets benefits
+\item From devs to QA to customers
+\item Need to review how you release
+\item Puppet code is part of your app
+\end{iframe}
+\begin{iframe}[Advantages]
+\item Setup your app easily (internally and externally)
+\item Bring innovation more easily
+\item Get a clear view of the infrastructure
+\item Say bye bye to long procedures
+\end{iframe}
+\begin{iframe}[There is work]
+\item Big cultural changes
+\item Purge old artifacts on updates
+\item Deal with your data
+\item Convincing people
+\item Keep that infra up to date
+\end{iframe}
 
-% TODO Hiera
-% Data
-% Only thing to change between customers
-% Should be flexible but not too much
-
-% TODO Security
-% No app on Puppet server
-% Puppet server behind a proxy
-% No autosign
-% basic security stuffs
-% Integrate with external CA
-% Do not expose puppet db etc
-% maybe a schema here
-
-% TODO benefits
-% From CI to QA
-% From Developer to Tester
-% Also for demos
-
-% TODO to be careful with
-% Custom facts
-% Custom functions
-% Upstream bugs?
-
-% TODO Upgrades
-% Puppet is declartive
-% Example or resource purges
-% Should work in one run
-% important that puppetcode matches your app
-
-% TODO how to ship
-% Product
-% Dependencies
-% Signed
-% On Site?
-% OS evolves
-
-% screenshot dash baord
-
-
-% conclustion
-%everyone win
-% win time
-% Follow os ugrade
-% push best practices
-% Ensure a state
-
-% challenges
-% flexibility
-% contributions
-% monitoring
-% culture
+\begin{iframe}[Challenges]
+\item Monitoring
+\item Flexibility
+\item Culture
+\item Learning
+\end{iframe}
 
 \thankyouSlide
 \renewcommand{\insertLogo}{}
