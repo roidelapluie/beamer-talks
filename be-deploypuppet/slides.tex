@@ -26,12 +26,12 @@
 \end{iframe}
 \begin{frame}
     \frametitle{Distributing Software}
-    \begin{itemize}\pause
-        \item {Plain FTP (+SCM)}\pause
-        \item {Tarball}\pause
-        \item {Self-extracting tarball}\pause
-        \item {curl|bash}\pause
-        \item{Containers? What's inside?}\pause
+    \begin{itemize}
+        \item {Plain FTP (+SCM)}
+        \item {Tarball}
+        \item {Self-extracting tarball}
+        \item {curl|bash}
+        \item{Containers? What's inside?}
         \item {Packages (.deb,~.rpm,\dots)}
     \end{itemize}
 \end{frame}
@@ -43,7 +43,7 @@
 }
 
 
-\begin{iframe}[Welcome in the real world]
+\begin{iframe}[Welcome in my world]
 \item Complex SW
 \item Self-hosting
 \item Stateless software
@@ -54,10 +54,6 @@
 \item Software (Source code or binaries)
 \item User guide
 \item Installation guide
-\end{iframe}
-
-\begin{iframe}[Software distribution in entreprise]
-\item Software (Source code or binaries)
 \item People who install the software
 \end{iframe}
 
@@ -67,25 +63,14 @@
 \item HW requirements
 \item SW requirements
 \item Upgrades
-\item Maintenances
+\item Maintenance
 \item Monitoring
 \end{iframe}
-\begin{iframe}[Closing the gap]
-\item Bringing the entreprise in 2015
-\item Between people in the chain
-    \begin{itemize}
-        \item Developers
-        \item Managers
-        \item Support people
-        \item Services
-    \end{itemize}
-\item A DevOps World
-\item Culture, Automation, Monitoring, Sharing
-\end{iframe}
+
 
 \CenterSlide{Introduction}
 \begin{frame}
-    \frametitle{Packaging}
+    \frametitle{Artifacts: Packaging}
     \begin{itemize}
         \item {Consistency checks, file lists}
         \item {Dependencies resolving}
@@ -99,17 +84,14 @@
 \end{frame}
 
 \begin{iframe}[Dependencies]
-\item{Prefer distro packages}
-\item{Upstream packages}
-\item{Reliable repos (EPEL?)}
-\item{More dependencies = more work}
+\item{Use packages also}
+\item{Version your repositories}
+\item{Test your dependencies}
+\item{Distribution, Upstream packages}
+\item{Mirror and cherry pick from upstream repos}
+\item{Limit the number of dependencies}
 \end{iframe}
 
-\begin{frame}
-\LARGE
-This talk is about how to ship Puppet code with your application, to be used at customers on platforms you do not manage.
-\end{frame}
-\CenterSlide{Automation}
 
 \begin{iframe}[Automation]
 \item Automate all the things
@@ -117,6 +99,7 @@ This talk is about how to ship Puppet code with your application, to be used at 
 \item Reproducable builds
 \item Repositories management
 \end{iframe}
+
 \begin{iframe}[Cultural changes]
 \item No more manual work
 \item Use an appropriate toolchain
@@ -126,8 +109,8 @@ This talk is about how to ship Puppet code with your application, to be used at 
 
 \begin{iframe}[Documentation]
 \item No more complex install guides
-\item Puppet 101
-\item One stack for several products
+\item Puppet training
+\item Valid for several products
 \end{iframe}
 
 \frame[b]{%
@@ -193,16 +176,27 @@ This talk is about how to ship Puppet code with your application, to be used at 
 \item Puppet is not your core business
 \end{iframe}
 
-\CenterSlide{Your modules}
 
-\begin{iframe}
+\begin{iframe}[Your modules]
 \item Everyone has write access
 \item Follow code standards (puppet-lint)
 \item Be future-proof
 \item Separation between code and data
 \end{iframe}
 
-\CenterSlide{Your Tree}
+\begin{iframe}[Your puppet tree]
+\item Your tree is next to your app code
+\item Submodules of your app
+\item Gets the same version number
+\item Contains the right parameters
+\end{iframe}
+\begin{iframe}[Distribute your tree]
+\item Package the whole tree in a package
+\item Use package dependencies to pull puppet
+\item Maybe add a helper script for the first run
+\end{iframe}
+
+
 \begin{iframe}
 \item Your tree is next to your app code
 \item Submodules of your app
@@ -284,32 +278,48 @@ This talk is about how to ship Puppet code with your application, to be used at 
 \item Be careful with exported resources
 \end{iframe}
 
+\CenterSlide{Runtime}
+\begin{iframe}[Deploy your Puppet tree]
+\item Install your puppet tree package
+\item Install the hiera files (versioned?)
+\item One puppet apply to deploy a basic server
+\item Then the first agent run to deploy PuppetDB and the rest
+\item There is no puppetlabs-puppet module
+\end{iframe}
+
+
 \CenterSlide{Conclusion}
 \begin{iframe}[Shipping with puppet code]
 \item Everyone gets benefits
 \item From devs to QA to customers
 \item Need to review how you release
+\item Need to review how you deploy your OS
 \item Puppet code is part of your app
 \end{iframe}
 \begin{iframe}[Advantages]
 \item Setup your app easily (internally and externally)
-\item Bring innovation more easily
+\item Get consistent deployments at several customer
+\item Predict what will be deployed
 \item Get a clear view of the infrastructure
 \item Say bye bye to long procedures
 \end{iframe}
 \begin{iframe}[There is work]
 \item Big cultural changes
+    \begin{itemize}
+        \item Root access?
+        \item The shell script works\dots
+        \item I can't do X anymore\dots
+    \end{itemize}
 \item Purge old artifacts on updates
 \item Deal with your data
-\item Convincing people
 \item Keep that infra up to date
 \end{iframe}
 
-\begin{iframe}[Challenges]
+\begin{iframe}[Open the pandora box!]
 \item Monitoring
-\item Flexibility
-\item Culture
-\item Learning
+\item Best practices enforcement
+\item Repositories management
+\item Bring your own tools
 \end{iframe}
 
 \thankyouSlide
