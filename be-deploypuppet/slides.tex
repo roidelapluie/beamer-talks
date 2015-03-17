@@ -188,14 +188,14 @@
 \item Your tree is next to your app code
 \item Submodules of your app
 \item Gets the same version number
-\item Contains the right parameters
+\item Parameters matches your apps parameters
 \end{iframe}
+
 \begin{iframe}[Distribute your tree]
 \item Package the whole tree in a package
 \item Use package dependencies to pull puppet
 \item Maybe add a helper script for the first run
 \end{iframe}
-
 
 \begin{iframe}
 \item Your tree is next to your app code
@@ -204,29 +204,29 @@
 \item Contains the right parameters
 \end{iframe}
 
-\CenterSlide{Agent or Masterless}
 
-\begin{iframe}[Agent or masterless]
+\begin{iframe}[Puppet Agent or masterless]
 \item Puppet has 2 modes
 \item Pull your catalog
 \item Apply it from files
 \item Both have advantages
 \item Depends on what you want
 \end{iframe}
-\begin{iframe}[Masterless]
+\begin{iframe}[Masterless mode]
 \item One-time run
 \item No daemon running
 \item No need for a Puppet master
 \item No exported resources
 \item No PuppetDB
 \end{iframe}
-\begin{iframe}[Puppet agent]
-\item Run every X time
-\item Sanity check
+\begin{iframe}[Agent mode]
+\item Run every X time (to be tuned)
+\item Consitency check
 \item Requires one master
-\item Puppet daemon running
+\item Puppet daemon running (as root)
 \item Reports sent to the master
 \end{iframe}
+
 \begin{iframe}[PuppetDB]
 \item Requires a master
 \item Stores facts and reports
@@ -234,22 +234,6 @@
 \item Dashboards available
 \item Exported resources
 \end{iframe}
-\begin{iframe}[Security]
-\item Puppet agent runs as root
-\item Not the master
-\item Isolate the master
-\item Puppet reports show what changes in time
-\item And detects problems earlier
-\end{iframe}
-\begin{iframe}[Security - Master/Server]
-\item Do not use autosign
-\item You can rely on external CA
-\item Put a reverse proxy (even for server)
-\item Isolate the service from the application
-\item PuppetDB only listens to Loopback
-\end{iframe}
-
-\CenterSlide{Hiera}
 
 \begin{iframe}[Hiera]
 \item Data separation
@@ -267,6 +251,23 @@
 \item Should be avoided (obscurification)
 \item Nice to have for edge cases
 \end{iframe}
+
+\begin{iframe}[Security]
+\item Puppet agent runs as root
+\item The master runs as "puppet" user
+\item Isolated on a separated host
+\item PuppetDB/Server only listens to Loopback
+\item Put a reverse proxy (even for server)
+\end{iframe}
+
+\begin{iframe}[Security - Master/Server]
+\item Do not use autosign
+\item You can rely on external CA
+\item Isolate the service from the application
+\item Query PuppetDB from your monitoring tool
+\end{iframe}
+
+
 
 \CenterSlide{Pre Existing Puppet}
 
