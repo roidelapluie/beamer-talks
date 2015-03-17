@@ -8,7 +8,7 @@ commit:
 presentation:
 	xelatex presentation.tex
 	xelatex presentation.tex
-	rm *.aux *.log *.nav *.out *.snm *.toc *.xwm
+	rm *.aux *.log *.nav *.out *.snm *.toc
 
 
 handout:
@@ -17,7 +17,7 @@ handout:
 	rm *.aux *.log *.nav *.out *.snm *.toc
 
 clean:
-	rm *.pdf *.aux *.log *.nav *.out *.snm *.toc *.xwm
+	rm *.pdf *.aux *.log *.nav *.out *.snm *.toc
 
 
 mupdf-presentation: presentation
