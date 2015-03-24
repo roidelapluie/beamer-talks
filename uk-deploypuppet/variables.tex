@@ -1,0 +1,19 @@
+\let\nc\newcommand
+\nc{\insertTitle}{Puppet and Software delivery}
+\nc{\insertShortTitle}{\insertTitle}
+\nc{\insertDate}{\ctr{FLOSS UK DevOps Spring}\\\ctr{March 25, 2015}}
+\nc{\insertLogo}{\includegraphics[height=1cm]{flossuk-182x70.png}}
+%\nc{\insertSubtitle}{A Puppet(labs) module that needs some love}
+\nc{\insertSubtitle}{Shipping your product with Puppet code}
+
+\usepackage[printwatermark]{xwatermark}
+
+
+\setbeamertemplate{headline}{%
+    \leavevmode%
+    \hbox{%
+        \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+            \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+        \end{beamercolorbox}%
+    }
+}

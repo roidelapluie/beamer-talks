@@ -1,0 +1,335 @@
+\titleSlide
+
+\frame{%
+    \frametitle{\$::user}
+    \framesubtitle{Julien Pivotto}
+    \begin{itemize}
+        \item{Open-Source consultant at {\inuits{}inuits\small.eu}}
+        \item{Puppet User since 2011}
+        \item{Speaker/attendee at Puppetcamps}
+        \item{Puppet core contributor}
+        \item{Puppet(labs) modules contributor}
+        \olditem{\textit{\ctr{@roidelapluie}} \ctr{on irc/twitter/github}}
+    \end{itemize}
+
+}
+
+\inuitsSlide
+
+\begin{iframe}[Welcome in 2015]
+\item Virtualization
+\item Containers
+\item Cloud
+\item Stateless software
+\item Scalable daemons
+\end{iframe}
+\begin{frame}
+    \frametitle{Distributing Software}
+    \begin{itemize}
+        \item {Plain FTP (+SCM)}
+        \item {Tarball}
+        \item {Self-extracting tarball}
+        \item {curl|bash}
+        \item{Containers? What's inside?}
+        \item {Packages (.deb,~.rpm,\dots)}
+    \end{itemize}
+\end{frame}
+\frame[b]{%
+    \largepic{entreprise.jpg}
+    \begin{center}\Huge{}\ctr{Real World}\end{center}
+    \sethlcolor{black}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/kwarz/13293732384/}
+}
+
+
+\begin{iframe}[Welcome in my world]
+\item Complex SW
+\item Self-hosted
+\item Stateful software
+\item Scalable daemons
+\item Lots of reqs and deps
+\end{iframe}
+
+\begin{iframe}[Software distribution]
+\item Software (Source code or binaries)
+\item User guide
+\item Installation guide
+\item People who install the software
+\end{iframe}
+
+\begin{iframe}[Challenges of SW distribution]
+\item Artifacts
+\item Configuration
+\item Security
+\item HW requirements
+\item SW requirements
+\item Upgrades
+\item Maintenance
+\item Monitoring
+\end{iframe}
+
+
+\section{Introduction}
+\CenterSlide{Introduction}
+\begin{frame}
+    \frametitle{Artifacts: Packaging}
+    \begin{itemize}
+        \item {Consistency checks, file lists}
+        \item {Dependencies resolving}
+        \item {Repositories}
+        \item {GPG-Signing}
+        \item {Lots of tools}
+        \item {Versioning}
+        \item {Unique artifacts, reproducible build}
+        \item{CfgMgmt integration (Puppet, Chef\dots)}
+    \end{itemize}
+\end{frame}
+
+\begin{iframe}[Dependencies]
+\item{Use packages also}
+\item{Version your repositories}
+\item{Test your dependencies}
+\item{Distribution, Upstream packages}
+\item{Mirror and cherry pick from upstream repos}
+\item{Limit the number of dependencies}
+\end{iframe}
+
+
+\begin{iframe}[Automation]
+\item Automate all the things
+\item OS, Monitoring, Application
+\item Reproducable builds
+\item Repositories management
+\end{iframe}
+
+\begin{iframe}[Cultural changes]
+\item No more manual work
+\item Use an appropriate toolchain
+\item Manual action = Error prone
+\item What did I change 3 years ago?
+\end{iframe}
+
+\begin{iframe}[Documentation]
+\item No more complex install guides
+\item Puppet training
+\item Valid for several products
+\end{iframe}
+
+\section{Scope}
+\frame[b]{%
+    \largepic{puppet.jpg}
+    %\sethlcolor{black}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/jimmcd/4859841581}
+}
+
+\begin{iframe}[Puppet]
+\item Widely used Automation tool\pause
+\item Very mature\pause
+\item Client/Server mode\pause
+\item Standalone mode\pause
+\item Declarative\pause
+\item Scales
+\end{iframe}
+
+\begin{frame}
+    \frametitle{What to automate?}
+    \huge
+    Application\\
+    Reverse Proxy / Databases\\
+    Monitoring\\
+    Operation System\\
+    Platform
+\end{frame}
+
+\begin{frame}
+    \frametitle{To manage or not?}
+    \huge You have to be able to chose which part you will setup with Puppet.
+\end{frame}
+\section{Development}
+\begin{frame}
+    \frametitle{Use Puppet modules}
+    \huge Use separate meta-modules for OS, Dependencies, Monitoring, Application\dots{} And include them only of needed.
+\end{frame}
+
+\begin{iframe}[Yes, no or noop]
+\item Include or not each class
+\item You can put a whole class in no-op
+\item{\texttt{include myapp\_os}}
+\item{\texttt{class \{'myapp\_os': noop => true,\}}}
+\end{iframe}
+
+\CenterSlide{Puppet Modules}
+
+\begin{iframe}[External modules]
+\item Pick the best ones
+\item Puppetlabs modules
+\item Upstream modules
+\item Modules active on Github
+\item Forge rating
+\item Testing, doc
+\item Modules that fit your usecase
+\end{iframe}
+
+\begin{frame}\LARGE Review the modules you plan to include. You do not want bad code in your app, why would you want it in the code that deploys your app?\end{frame}
+
+\begin{iframe}[Contribute back]
+\item Get feedback (peer review)
+\item Easier to maintain in long term
+\item Forces you to write tests
+\item Help other people
+\item Puppet is not your core business
+\end{iframe}
+
+
+\begin{iframe}[Your modules]
+\item Everyone has write access
+\item Follow code standards (puppet-lint)
+\item Be future-proof
+\item Separation between code and data
+\end{iframe}
+
+\begin{iframe}[Your puppet tree]
+\item Your tree is next to your app code
+\item Submodules of your app
+\item Gets the same version number
+\item Parameters matches your apps parameters
+\end{iframe}
+
+\begin{iframe}[Distribute your tree]
+\item Package the whole tree in a package
+\item Use package dependencies to pull puppet
+\item Maybe add a helper script for the first run
+\end{iframe}
+
+\begin{iframe}
+\item Your tree is next to your app code
+\item Submodules of your app
+\item Gets the same version number
+\item Contains the right parameters
+\end{iframe}
+
+
+\section{Runtime}
+
+\begin{iframe}[Puppet Agent or masterless]
+\item Puppet has 2 modes
+\item Pull your catalog
+\item Apply it from files
+\item Both have advantages
+\item Depends on what you want
+\end{iframe}
+\begin{iframe}[Masterless mode]
+\item One-time run
+\item No daemon running
+\item No need for a Puppet master
+\item No exported resources
+\item No PuppetDB
+\end{iframe}
+\begin{iframe}[Agent mode]
+\item Run every X time (to be tuned)
+\item Consitency check
+\item Requires one master
+\item Puppet daemon running (as root)
+\item Reports sent to the master
+\end{iframe}
+
+\begin{iframe}[PuppetDB]
+\item Requires a master
+\item Stores facts and reports
+\item Easy to query
+\item Dashboards available
+\item Exported resources
+\end{iframe}
+
+\begin{iframe}[Hiera]
+\item Data separation
+\item You classes should have a stable API
+\item Your main class dispatches to other modules
+\item Use functions:
+\begin{itemize}
+    \item create\_resource
+    \item mysql\_deepmerge
+\end{itemize}
+\end{iframe}
+\begin{iframe}[Automatic Parameter Lookup]
+\item{\texttt{class::param: "foobar"}}
+\item Available in Puppet 3+
+\item Should be avoided (obscurification)
+\item Nice to have for edge cases
+\end{iframe}
+
+\begin{iframe}[Security]
+\item Puppet agent runs as root
+\item The master runs as "puppet" user
+\item Isolated on a separated host
+\item PuppetDB/Server only listens to Loopback
+\item Put a reverse proxy (even for server)
+\end{iframe}
+
+\begin{iframe}[Security - Master/Server]
+\item Do not use autosign
+\item You can rely on external CA
+\item Isolate the service from the application
+\item Query PuppetDB from your monitoring tool
+\end{iframe}
+
+
+
+\CenterSlide{Pre Existing Puppet}
+
+\begin{iframe}[Pre Existing Puppet]
+\item There might be a puppet setup
+\item Work in a separated environment
+\item Puppet hieradata in a subdirectory
+\item Prefix your custom functions
+\item Be careful with exported resources
+\end{iframe}
+
+\CenterSlide{Runtime}
+\begin{iframe}[Deploy your Puppet tree]
+\item Install your puppet tree package
+\item Install the hiera files (versioned?)
+\item One puppet apply to deploy a basic server
+\item Then the first agent run to deploy PuppetDB and the rest
+\item There is no puppetlabs-puppet module
+\end{iframe}
+\section{Conclusion}
+
+
+\CenterSlide{Conclusion}
+\begin{iframe}[Shipping with puppet code]
+\item Everyone gets benefits
+\item From devs to QA to customers
+\item Need to review how you release
+\item Need to review how you deploy your OS
+\item Puppet code is part of your app
+\end{iframe}
+\begin{iframe}[Advantages]
+\item Setup your app easily (internally and externally)
+\item Get consistent deployments at several customer
+\item Predict what will be deployed
+\item Get a clear view of the infrastructure
+\item Say bye bye to long procedures
+\end{iframe}
+\begin{iframe}[There is work]
+\item Big cultural changes
+    \begin{itemize}
+        \item Root access?
+        \item The shell script works\dots
+        \item I can't do X anymore\dots
+    \end{itemize}
+\item Purge old artifacts on updates
+\item Deal with your data
+\item Keep that infra up to date
+\end{iframe}
+
+\begin{iframe}[Open the pandora box!]
+\item Monitoring
+\item Best practices enforcement
+\item Repositories management
+\item Bring your own tools
+\end{iframe}
+
+\thankyouSlide
+\renewcommand{\insertLogo}{}
+\contactSlide
