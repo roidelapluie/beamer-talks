@@ -16,7 +16,7 @@
 
 \inuitsSlide
 
-\begin{iframe}[Welcome in 2015]
+\begin{iframe}[IT Nowadays (?)]
 \item Virtualization
 \item Containers
 \item Cloud
@@ -42,15 +42,15 @@
 }
 
 
-\begin{iframe}[Welcome in my world]
+\begin{iframe}[Software in my world]
 \item Complex SW
 \item Self-hosted
-\item Stateful software
-\item Scalable daemons
+\item Stateful
+\item Scalable
 \item Lots of reqs and deps
 \end{iframe}
 
-\begin{iframe}[Software distribution]
+\begin{iframe}[Distribution]
 \item Software (Source code or binaries)
 \item User guide
 \item Installation guide
@@ -63,14 +63,18 @@
 \item Security
 \item HW requirements
 \item SW requirements
-\item Upgrades
-\item Maintenance
+\item Upgrades, Maintenance
 \item Monitoring
 \end{iframe}
 
 
 \section{Introduction}
-\CenterSlide{Introduction}
+\frame[b]{%
+    \largepic{packaging.jpg}
+\begin{center}\Huge{}\ctr{Artifacts}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/halfbisqued/2353845688}
+}
 \begin{frame}
     \frametitle{Artifacts: Packaging}
     \begin{itemize}
@@ -81,13 +85,13 @@
         \item {Lots of tools}
         \item {Versioning}
         \item {Unique artifacts, reproducible build}
-        \item{CfgMgmt integration (Puppet, Chef\dots)}
+        \item {CfgMgmt integration (Puppet, Chef\dots)}
     \end{itemize}
 \end{frame}
 
 \begin{iframe}[Dependencies]
-\item{Use packages also}
-\item{Version your repositories}
+\item{Packaged also}
+\item{In versioned repositories}
 \item{Test your dependencies}
 \item{Distribution, Upstream packages}
 \item{Mirror and cherry pick from upstream repos}
