@@ -11,11 +11,9 @@
 \setbeamercolor{section in head/food}{fg=inuits,bg=blue!20}
 \setbeamercolor{section in head/food shaded}{fg=inuits}
 
-\setbeamertemplate{headline}{%
-    \leavevmode%
-    \hbox{%
-        \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{section in head/foot}%
-            \insertsectionnavigationhorizontal{\paperwidth}{\hskip0pt plus1filll}{\hskip0pt plus1filll}
-        \end{beamercolorbox}%
-    }
+\setbeamercolor{section in head/foot}{fg=yellow,bg=blue!20}
+\setbeamertemplate{section in head/foot shaded}[default][60]
+\setbeamertemplate{headline}{
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex]{section in head/foot}        \insertsectionnavigationhorizontal{.5\textwidth}{}{}
+    \end{beamercolorbox}
 }
