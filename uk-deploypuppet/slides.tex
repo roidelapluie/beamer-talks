@@ -191,7 +191,7 @@
 
 \begin{frame}\LARGE Review the modules you plan to include.\pause\\You do not want \textit{bad} code in your application, \textit{why} would you want it in the code that deploys it?\end{frame}
 
-\begin{iframe}[Contribute back to external modules]
+\begin{iframe}[Contribute back]
 \item Get feedback (peer review)
 \item Easier to maintain in long term
 \item Forces you to write tests
@@ -208,56 +208,16 @@
 \end{iframe}
 
 \begin{iframe}[Your puppet tree]
-\item Your tree is next to your app code
-\item Submodules of your app
+\item Your tree is next to your product code
+\item Submodules of your main repository
 \item Gets the same version number
-\item Parameters matches your apps parameters
+\item Parameters matches your product parameters
 \end{iframe}
 
 \begin{iframe}[Distribute your tree]
 \item Package the whole tree in a package
 \item Use package dependencies to pull puppet
 \item Maybe add a helper script for the first run
-\end{iframe}
-
-\begin{iframe}
-\item Your tree is next to your app code
-\item Submodules of your app
-\item Gets the same version number
-\item Contains the right parameters
-\end{iframe}
-
-
-\section{Runtime}
-
-\begin{iframe}[Puppet Agent or masterless]
-\item Puppet has 2 modes
-\item Pull your catalog
-\item Apply it from files
-\item Both have advantages
-\item Depends on what you want
-\end{iframe}
-\begin{iframe}[Masterless mode]
-\item One-time run
-\item No daemon running
-\item No need for a Puppet master
-\item No exported resources
-\item No PuppetDB
-\end{iframe}
-\begin{iframe}[Agent mode]
-\item Run every X time (to be tuned)
-\item Consitency check
-\item Requires one master
-\item Puppet daemon running (as root)
-\item Reports sent to the master
-\end{iframe}
-
-\begin{iframe}[PuppetDB]
-\item Requires a master
-\item Stores facts and reports
-\item Easy to query
-\item Dashboards available
-\item Exported resources
 \end{iframe}
 
 \begin{iframe}[Hiera]
@@ -270,12 +230,66 @@
     \item mysql\_deepmerge
 \end{itemize}
 \end{iframe}
+
+\begin{frame}
+    \frametitle{Data separation}
+    \huge Your code should be flexible enough: Hiera code is the only thing that should differ between your customers.
+\end{frame}
+
 \begin{iframe}[Automatic Parameter Lookup]
 \item{\texttt{class::param: "foobar"}}
 \item Available in Puppet 3+
 \item Should be avoided (obscurification)
 \item Nice to have for edge cases
 \end{iframe}
+
+\frame[b]{%
+    \largepic{showtime.jpg}
+    %\sethlcolor{black}
+\begin{center}\Huge{}\ctr{Going live}\end{center}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/colink/15096002421}
+}
+
+\begin{iframe}[Puppet Agent or masterless]
+\item Puppet has 2 modes
+\item Agent mode: pull your catalog
+\item Masterless mode: apply it from files
+\item Both have advantages
+\item Depends on what you want
+\end{iframe}
+
+\begin{iframe}[Masterless mode]
+\item One-time run
+\item No daemon running
+\item No need for a Puppet master
+\item No exported resources
+\item No PuppetDB
+\end{iframe}
+\begin{iframe}[Agent mode]
+\item Run every 30 minutes (to be tuned)
+\item Requires one puppet master
+\item Puppet Agent daemon running (as root)
+\item Reports sent to the master
+\item Consistency check over time
+\end{iframe}
+
+\begin{iframe}[PuppetDB]
+\item Requires a master
+\item Stores facts and reports
+\item Easy to query
+\item Dashboards available
+\item Exported resources
+\end{iframe}
+
+\begin{iframe}[Deploy your Puppet tree]
+\item Install your puppet tree package
+\item Install the hiera files (versioned?)
+\item One puppet apply to deploy a basic server
+\item Then the first agent run to deploy PuppetDB and the rest
+\item There is no puppetlabs-puppet module
+\item Tools can help you with that (e.g kafo)
+\end{iframe}
+
 
 \begin{iframe}[Security]
 \item Puppet agent runs as root
@@ -293,25 +307,16 @@
 \end{iframe}
 
 
-
 \CenterSlide{Pre Existing Puppet}
 
 \begin{iframe}[Pre Existing Puppet]
-\item There might be a puppet setup
+\item There might be a puppet setup at customer
 \item Work in a separated environment
-\item Puppet hieradata in a subdirectory
+\item Put your hiera data in a subdirectory
 \item Prefix your custom functions
 \item Be careful with exported resources
 \end{iframe}
 
-\CenterSlide{Runtime}
-\begin{iframe}[Deploy your Puppet tree]
-\item Install your puppet tree package
-\item Install the hiera files (versioned?)
-\item One puppet apply to deploy a basic server
-\item Then the first agent run to deploy PuppetDB and the rest
-\item There is no puppetlabs-puppet module
-\end{iframe}
 \section{Conclusion}
 
 
@@ -321,7 +326,7 @@
 \item From devs to QA to customers
 \item Need to review how you release
 \item Need to review how you deploy your OS
-\item Puppet code is part of your app
+\item Puppet code is part of your product
 \end{iframe}
 \begin{iframe}[Advantages]
 \item Setup your app easily (internally and externally)
