@@ -21,23 +21,27 @@
 \item Infrastructure as Code
 \item Pay for services, not software
 \end{iframe}
+
 \begin{iframe}[Providing a service]
 \item You know the environment
 \item You do the maintenance
 \item You do the upgrades
 \end{iframe}
+
 \begin{iframe}[Shipping a software]
 \item What is the environment?
 \item How was it setup?
 \item Did you change someting?
 \item Will someone maintain it? Monitor it?
 \end{iframe}
+
 \begin{iframe}[Two different worlds]
 \item Managing everything vs delegating
 \item Known environment vs Fixed environment
 \item Rolling updates vs Updates at will
 \item Monitoring vs end-users complains
 \end{iframe}
+
 %\frame[b]{%
 %    \largepic{entreprise.jpg}
 %    \begin{center}\Huge{}\ctr{}\end{center}
@@ -91,6 +95,7 @@
         \item {Packages (.deb,~.rpm,\dots)}
     \end{itemize}
 \end{frame}
+
 \begin{frame}
     \frametitle{Packaging}
     \begin{itemize}
@@ -263,8 +268,13 @@
 \item Depends on what you want
 \end{iframe}
 
-\begin{iframe}[Masterless mode]
+\begin{iframe}[Masterless mode (puppet apply)]
 \item One-time run
+\item Requires hiera data on every host
+\begin{itemize}
+    \item Hiera data should be consistent accross hosts
+    \item No single source of truth
+\end{itemize}
 \item No daemon running
 \item No need for a Puppet master
 \item No exported resources
@@ -297,9 +307,9 @@
 
 
 \begin{iframe}[Security]
-\item Puppet agent runs as root
+\item Puppet agent runs as root (launch it with cron)
 \item The master runs as "puppet" user
-\item Isolated on a separated host
+\item Master is isolated on a separated host
 \item PuppetDB/Server only listens to Loopback
 \item Put a reverse proxy (even for server)
 \end{iframe}
@@ -333,13 +343,15 @@
 \item Need to review how you deploy your OS
 \item Puppet code is part of your product
 \end{iframe}
+
 \begin{iframe}[Advantages]
-\item Setup your app easily (internally and externally)
+\item Setup your product easily (internally and externally)
 \item Get consistent deployments at several customer
 \item Predict what will be deployed
 \item Get a clear view of the infrastructure
 \item Say bye bye to long procedures
 \end{iframe}
+
 \begin{iframe}[There is work]
 \item Big cultural changes
     \begin{itemize}
