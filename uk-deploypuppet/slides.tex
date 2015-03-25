@@ -17,35 +17,38 @@
 \inuitsSlide
 
 \begin{iframe}[IT Nowadays (?)]
-\item Virtualization
-\item Containers
-\item Cloud
-\item Stateless software
-\item Scalable daemons
+\item Virtualization, Containers, Cloud
+\item Infrastructure as Code
+\item Pay for services, not software
 \end{iframe}
-\begin{frame}
-    \frametitle{Distributing Software}
-    \begin{itemize}
-        \item {Plain FTP (+SCM)}
-        \item {Tarball}
-        \item {Self-extracting tarball}
-        \item {curl|bash}
-        \item{Containers? What's inside?}
-        \item {Packages (.deb,~.rpm,\dots)}
-    \end{itemize}
-\end{frame}
-\frame[b]{%
-    \largepic{entreprise.jpg}
-    \begin{center}\Huge{}\ctr{Real World}\end{center}
-    \sethlcolor{black}
-    \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/kwarz/13293732384/}
-}
+\begin{iframe}[Providing a service]
+\item You know the environment
+\item You do the maintenance
+\item You do the upgrades
+\end{iframe}
+\begin{iframe}[Shipping a software]
+\item What is the environment?
+\item How was it setup?
+\item Did you change someting?
+\end{iframe}
+\begin{iframe}[Two different worlds]
+\item Managing everything vs delegating
+\item Known environment vs Fixed environment
+\item Rolling updates vs Updates at will
+\item Monitoring vs end-users complains
+\end{iframe}
+%\frame[b]{%
+%    \largepic{entreprise.jpg}
+%    \begin{center}\Huge{}\ctr{}\end{center}
+%    \sethlcolor{black}
+%    \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/kwarz/13293732384/}
+%}
 
 
-\begin{iframe}[Software in my world]
-\item Complex SW
+\begin{iframe}[Shipped Softwares]
 \item Self-hosted
 \item Stateful
+\item Complexity
 \item Scalable
 \item Lots of reqs and deps
 \end{iframe}
@@ -75,6 +78,17 @@
 \sethlcolor{black}
 \flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/halfbisqued/2353845688}
 }
+\begin{frame}
+    \frametitle{Distributing Software}
+    \begin{itemize}
+        \item {Plain FTP (+SCM)}
+        \item {Tarball}
+        \item {Self-extracting tarball}
+        \item {curl|bash}
+        \item {Containers? What's inside?}
+        \item {Packages (.deb,~.rpm,\dots)}
+    \end{itemize}
+\end{frame}
 \begin{frame}
     \frametitle{Packaging}
     \begin{itemize}
@@ -112,7 +126,11 @@
 \item Manual action = Error prone
 \item What did I change 3 years ago?
 \end{iframe}
-
+\begin{iframe}[Impact on documentation]
+\item No more complex install guides
+\item Puppet training needed
+\item Valid for several products
+\end{iframe}
 
 \section{Scope}
 \frame[b]{%
@@ -145,11 +163,6 @@
     \huge You have to be able to chose which part you will setup with Puppet.\\\large Customers have different culture or want to get control of parts of your application.
 \end{frame}
 
-\begin{iframe}[Impact on documentation]
-\item No more complex install guides
-\item Puppet training needed
-\item Valid for several products
-\end{iframe}
 \section{Development}
 \begin{frame}
     \frametitle{Use Puppet modules}
@@ -159,8 +172,9 @@
 \begin{iframe}[Yes, no or noop]
 \item Include or not each class
 \item You can put a whole class in no-op
-\item{\texttt{include myapp\_os}}
-\item{\texttt{class \{'myapp\_os': noop => true,\}}}
+\item {\texttt{include myapp\_os}}
+\item {\texttt{class \{'myapp\_os': noop => true,\}}}
+\item {Usecase: check that preconditions are met}
 \end{iframe}
 
 \CenterSlide{Puppet Modules}
@@ -171,7 +185,7 @@
 \item Upstream modules
 \item Modules active on Github
 \item Forge rating
-\item Testing, doc
+\item Testing, documentation
 \item Modules that fit your usecase
 \end{iframe}
 
