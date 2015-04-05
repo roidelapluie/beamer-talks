@@ -8,6 +8,7 @@ commit:
 presentation:
 	xelatex presentation.tex
 	xelatex presentation.tex
+	./mvdate.sh
 	rm *.aux *.log *.nav *.out *.snm *.toc *.xwm
 
 
