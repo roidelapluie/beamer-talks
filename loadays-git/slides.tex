@@ -16,12 +16,12 @@
 
 \frame{%
 
-    \tikzset{every node/.append style={scale=0.7}}
+    \tikzset{every node/.append style={scale=0.7,font=\os}}
 \begin{tikzpicture}
     \path[concept color=black,text=white, yscale=0.9,xscale=1.3]
     node[concept, level distance=1cm] {foofoo}
     [clockwise from=0]
-    child[concept color=green!50!black,font=\os] {node[concept]{foo2foo2}};
+    child[concept color=green!50!black,font] {node[concept]{foo2foo2}};
     \end{tikzpicture}
 }
 
