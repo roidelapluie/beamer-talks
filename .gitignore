@@ -1,1 +1,6 @@
 *.pdf
+bin
+lib
+lib64
+include
+pip*.json
