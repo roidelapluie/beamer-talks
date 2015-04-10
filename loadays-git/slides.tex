@@ -148,10 +148,16 @@
 \item Step 5: GOTO Step 1
 \end{iframe}
 
-\begin{iframe}[What do we have?]
-\only<1>{\item A nice step-by-step list of changes}
-\only<2>{\color{red!90!white}{\item{\st{A nice step-by-step list of changes}}}}
-\end{iframe}
+\begin{frame}\frametitle{What do we have?}
+\only<1>{\begin{center}\contour{A nice step-by-step list of changes}\end{center}}
+\only<2>{\color{red!90!white}{%
+\begin{center}
+    \contour{%
+        \st{A nice step-by-step list of changes}
+    }
+\end{center}
+}}
+\end{frame}
 
 \frame{%
     \begin{center}
