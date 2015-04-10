@@ -163,14 +163,24 @@
     \path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
     node[concept, color=grey!50!black,text=white] {d705683}
     [clockwise from=0]
-    child[concept color=green!50!black] {node[concept]{dce1845}
-    child[concept color=blue!50!black] {node[concept]{7d9d95d}
-    child[concept color=red!50!black] {node[concept]{6cea694}
-    child[concept color=red!50!black] {node[concept]{dd590b4}
-    child[concept color=red!50!black] {node[concept]{ccb3389}}
-child[concept color=red!50!black] {node[concept]{85c05ba}}}
-    
-    }}};
+    child[concept color=green!50!black] {%
+        node[concept]{dce1845}
+        child[concept color=blue!50!black] {%
+            node[concept]{7d9d95d}
+            child[concept color=red!50!black] {%
+                node[concept]{6cea694}
+                child[concept color=red!50!black] {%
+                    node[concept]{dd590b4}
+                    child[concept color=red!50!black] {%
+                        node[concept]{ccb3389}
+                    }
+                    child[concept color=red!50!black] {%
+                        node[concept]{85c05ba}
+                    }
+                }
+            }
+        }
+};
     \end{tikzpicture}
 \end{center}
 }
