@@ -251,6 +251,12 @@
 \end{center}
 }
 
+\begin{iframe}[rebasing]
+\item Cleaner project history
+\item Less commits
+\item "Single-line" commit history
+\end{iframe}
+
 \CenterSlide{Squashing}
 
 \begin{iframe}[Daily work]
@@ -377,6 +383,62 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
 % workflows
 % git squash
 % git merge
+\begin{frame}
+    \begin{center}
+        \Huge{Additional tips}
+    \end{center}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Use SSH sockets}
+\begin{block}{}\begin{semiverbatim}
+\$ cat {}.ssh/config
+Host githost
+    controlmaster auto
+    controlpath /tmp/ssh-\%r@\%h:\%p
+    ControlPersist 300
+\end{semiverbatim}\end{block}
+    \begin{itemize}
+        \item Use only one SSH connection
+        \item Do not disconnect SSH
+    \end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Find the tag of a commit}
+
+\begin{block}{}\begin{semiverbatim}
+\$ git name-rev --name-only 106cb38dd0bc5ea2d2d0adef0b40
+06bd61884e42
+\color{lightgrey}remotes/origin/8.5.2~1
+\end{semiverbatim}\end{block}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{git autocorrect}
+\begin{block}{}\begin{semiverbatim}
+\$ git config help.autocorrect 10\pause
+\$ git pusk
+\color{lightgrey}WARNING: You called a Git command named \rq{}pusk\rq{}, which does not exist.
+Continuing under the assumption that you meant \rq{}push\rq{}
+in 1.0 seconds automatically.{}.{}.
+\end{semiverbatim}\end{block}
+\end{frame}
+\begin{frame}
+    \frametitle{Use git hooks}
+    \begin{itemize}
+        \item Multiple repositories = a lot of pull
+        \item Jenkins pulling X repos X times every 5 minutes is a bad idea
+        \item Git hooks to the resue
+        \item Reduce load on Jenkins and the git server
+        \item Reduce the time before Jenkins launches builds
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{GPG-Sign your commits}
+    \begin{itemize}
+        \item git commit -S
+        \item Sign PR, merge commits
+        \item Do not sign every commit (then it becomes useless)
+    \end{itemize}
+\end{frame}
 
 \thankyouSlide
 \renewcommand{\insertLogo}{}
