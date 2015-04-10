@@ -22,7 +22,7 @@ clean:
 
 
 mupdf-presentation: presentation
-	mupdf-x11 presentation.pdf
+	pdfpc presentation.pdf
 
 mupdf-handout: handout
 	mupdf-x11 presentation.pdf
