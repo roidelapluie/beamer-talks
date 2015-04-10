@@ -138,7 +138,41 @@
 \item A more complete description, with context
 \end{iframe}
 
-\CenterSlide{The Hard Work}
+\CenterSlide{Rebasing}
+\begin{iframe}
+\item Step 1: you pull
+\item Step 2: you commit
+\item Step 3: colleague push
+\item Step 4: you pull
+\item Step 5: you push
+\end{iframe}
+
+\frame{%
+    \begin{center}
+    \tikzset{every node/.append style={scale=0.4,font=\os}}
+    \begin{tikzpicture}
+    %\path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
+        d705683
+        dce1845
+        7d9d95d
+        6cea694
+        dd590b4
+        85c05ba
+        ccb3389
+
+    \path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
+    node[concept, color=grey!50!black,text=white] {d705683}
+    [clockwise from=0]
+    child[concept color=green!50!black] {node[concept]{dce1845}
+    child[concept color=blue!50!black] {node[concept]{7d9d95d}
+    child[concept color=red!50!black] {node[concept]{6cea694}
+    child[concept color=red!50!black] {node[concept]{dd590b4}
+    child[concept color=red!50!black] {node[concept]{ccb3389}}}}}}
+    child[concept color=red!50!black] {node[concept]{85c05ba}};
+    \end{tikzpicture}
+\end{center}
+}
+\CenterSlide{Squashing}
 
 \begin{iframe}[Daily work]
 \item Step 1: code on your branch
