@@ -149,23 +149,6 @@
 \end{iframe}
 
 \termSlide{gitlog1.png}
-\begin{frame}[fragile,c]
-    \begin{verbatim}
-$ git log --formar
-8ac0fed Fix #231: backend refuses to start
-3092c78 Implement #234: Add a --query option
-f55d65e Implement #254: LDAP Sign-On
-a4c8b39 Fix #274: LDAP logs are missing
-2ac72a4 #274: Set the right debug level
-48e6f6f #274: More ldap debugs
-42b3af2 #274: Missing coma
-b7d0830 #274: Now it should work
-c0cf800 #274: Typo
-7df0c0a #274: More Typo
-cfe76f4 Revert "#274: More ldap debugs"
-
-    \end{verbatim}
-\end{frame}
 \begin{frame}\frametitle{What do we have?}
     \huge
 \only<1>{\begin{center}\contour{black}{A nice step-by-step list of changes}\end{center}}
@@ -184,17 +167,19 @@ cfe76f4 Revert "#274: More ldap debugs"
     \tikzset{every node/.append style={scale=0.7,font=\os}}
 \begin{tikzpicture}
     \path[concept color=green!50!black,text=white, yscale=0.9,xscale=1.3]
-    node[concept, color=green!50!black,text=white,level distance=1cm] {f40f8ed}
+    node[concept color=green!50!black] {4dd6437}
     [clockwise from=0]
-    child[concept color=green!50!black] {node[concept]{66c2ad4}}
-    child[concept color=green!50!black] {
-        %[clockwise from=45]
-        node[concept]{7eac7a0}
-    }
-    [clockwise from=0]
-    child[concept color=green!50!black] {node[concept]{b620e99}}
-    [clockwise from=0]
-    child[concept color=green!50!black] {node[concept]{be0a86a}};
+    child[concept color=green!50!black] {node[concept]{8ac0fed}}
+    child[concept color=green!50!black] {node[concept]{3092c78}}
+    child[concept color=green!50!black] {node[concept]{f55d65e}}
+    child[concept color=green!50!black] {node[concept]{a4c8b39}}
+    child[concept color=green!50!black] {node[concept]{2ac72a4}}
+    child[concept color=green!50!black] {node[concept]{48e6f6f}}
+    child[concept color=green!50!black] {node[concept]{42b3af2}}
+    child[concept color=green!50!black] {node[concept]{b7d0830}}
+    child[concept color=green!50!black] {node[concept]{c0cf800}}
+    child[concept color=green!50!black] {node[concept]{7df0c0a}}
+    child[concept color=green!50!black] {node[concept]{cfe76f4}};
     \end{tikzpicture}
 \end{center}
 }
