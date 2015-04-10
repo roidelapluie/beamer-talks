@@ -364,6 +364,8 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
 \end{center}
 \end{frame}
 
+\CenterSlide{Force push is not friendly}
+
 %f40f8ed
 %0db443e
 %b620e99
@@ -422,16 +424,6 @@ in 1.0 seconds automatically.{}.{}.
 \end{semiverbatim}\end{block}
 \end{frame}
 \begin{frame}
-    \frametitle{Use git hooks}
-    \begin{itemize}
-        \item Multiple repositories = a lot of pull
-        \item Jenkins pulling X repos X times every 5 minutes is a bad idea
-        \item Git hooks to the resue
-        \item Reduce load on Jenkins and the git server
-        \item Reduce the time before Jenkins launches builds
-    \end{itemize}
-\end{frame}
-\begin{frame}
     \frametitle{GPG-Sign your commits}
     \begin{itemize}
         \item git commit -S
@@ -440,6 +432,10 @@ in 1.0 seconds automatically.{}.{}.
     \end{itemize}
 \end{frame}
 
+\begin{iframe}[Homework]
+    \item git reflog
+    \item git aliases
+\end{iframe}
 \thankyouSlide
 \renewcommand{\insertLogo}{}
 \contactSlide
