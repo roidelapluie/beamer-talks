@@ -162,9 +162,9 @@
 \uncover<2->{\begin{center}\Huge A big mess\\\huge No one would merge that\end{center}}
 \end{frame}
 
-    \tikzset{every node/.append style={scale=0.4,font=\os}}
 \frame{%
     \begin{center}
+    \tikzset{every node/.append style={scale=0.4,font=\os}}
     \begin{tikzpicture}
     %\path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
     \path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
@@ -228,9 +228,10 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
     child[concept color=red!50!black] {node[concept]{cfe76f4}};
     \end{tikzpicture}\\
         \huge After:\\
+    \tikzset{every node/.append style={scale=0.6,font=\os}}
     \begin{tikzpicture}
     %\path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
-    \path[text=white, yscale=0.6,xscale=0.6]
+    \path[text=white, yscale=0.8,xscale=0.8]
     node[concept, color=grey!50!black,text=white] {4dd6437}
     [clockwise from=0]
     child[concept color=green!50!black] {node[concept]{8ac0fed}
