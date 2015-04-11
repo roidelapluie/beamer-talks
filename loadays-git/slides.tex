@@ -377,6 +377,7 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
 \frame{%
     \begin{center}
     \tikzset{every node/.append style={scale=0.7,font=\os}}
+    \tikzstyle{every annotation}=[fill=inuits, font=\os]
     \begin{tikzpicture}
     %\path[concept color=grey!50!black,text=white, yscale=0.6,xscale=0.6]
 
@@ -401,7 +402,7 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
             }
         }
 };
-\node[annotation, left] at (master.west)
+\node[annotation, left] at (master.east)
       {master};
 
 \end{tikzpicture}
