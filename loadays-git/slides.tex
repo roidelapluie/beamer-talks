@@ -373,6 +373,7 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
 \end{iframe}
 
 \videoframesx{merge1}
+
 \frame{%
     \begin{center}
     \tikzset{every node/.append style={scale=0.7,font=\os}}
@@ -387,16 +388,23 @@ child[concept color=red!50!black] {node[concept]{cfe76f4}}}}}}}}}}}};
         child[concept color=blue!50!black] {%
             node[concept]{7d9d95d}
             child[concept color=pink!50!black] {%
-                node[concept]{6cea694}
-                child[grow=45,concept color=violet!50!black] {%
-                    node[concept]{dd590b4}
+                node[concept]{6cea694} (master)
+                child[grow=-45,concept color=red!50!black] {%
+                    node[concept]{935c8e1}
                     child[grow=0,concept color=red!50!black] {%
-                        node[concept]{ccb3389}
+                        node[concept]{bcdb4bf}
+                        child[grow=0,concept color=red!50!black] {%
+                            node[concept]{2aac4c7}
+                        }
                     }
                 }
             }
         }
-};
+}
+\node[annotation, left] at (master.west)
+      {master};
+
+;
 \end{tikzpicture}
 \end{center}
 }
