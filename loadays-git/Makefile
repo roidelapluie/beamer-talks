@@ -25,4 +25,4 @@ mupdf-presentation: presentation
 	pdfpc presentation.pdf
 
 mupdf-handout: handout
-	mupdf-x11 presentation.pdf
+	mupdf-x11 handout.pdf
