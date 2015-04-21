@@ -1,0 +1,8 @@
+\frametitle{git autocorrect}
+\begin{block}{}\begin{semiverbatim}
+\$ git config help.autocorrect 10\pause
+\$ git pusk
+\color{lightgrey}WARNING: You called a Git command named \rq{}pusk\rq{}, which does not exist.
+Continuing under the assumption that you meant \rq{}push\rq{}
+in 1.0 seconds automatically.{}.{}.
+\end{semiverbatim}\end{block}
