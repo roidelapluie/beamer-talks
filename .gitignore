@@ -4,3 +4,4 @@ lib
 lib64
 include
 pip*.json
+pv-sinf
