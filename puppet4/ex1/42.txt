@@ -1,0 +1,10 @@
+Notice: Compiled catalog for nitrogen in environment production in 0.23 seconds
+Notice: Belgian
+Notice: /Stage[main]/Main/Notify[Belgian]/message: defined 'message' as 'Belgian'
+Notice: Puppet
+Notice: /Stage[main]/Main/Notify[Puppet]/message: defined 'message' as 'Puppet'
+Notice: User
+Notice: /Stage[main]/Main/Notify[User]/message: defined 'message' as 'User'
+Notice: Group
+Notice: /Stage[main]/Main/Notify[Group]/message: defined 'message' as 'Group'
+Notice: Applied catalog in 0.01 seconds

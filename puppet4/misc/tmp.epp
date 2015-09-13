@@ -1,0 +1,12 @@
+<%- |
+    String $database,
+    String $password,
+    String $socket,
+    String $user,
+| -%>
+user=<%= $user %>
+password=<%= $password %>
+socket=<%= $socket %>
+database=<%= $database %>
+host=localhost
+create-table

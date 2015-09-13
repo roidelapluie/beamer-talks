@@ -1,0 +1,6 @@
+\lstinputlisting{ex1/38.txt}
+ \end{frame}
+\begin{frame}[fragile]%
+ \lstinputlisting{ex1/42.txt}
+ \end{frame}
+

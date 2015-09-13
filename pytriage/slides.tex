@@ -1,0 +1,156 @@
+\titleSlide
+\inuitsSlide
+\CenterSlide{Context}
+\begin{iframe}[Puppet Trees]
+\item We use a few Puppet Trees
+\item They are made of severa modules
+\item Everything is into git
+\item We share code internally (1 puppet tree per project)
+\item We share code with upstream and take code from upstream
+\end{iframe}
+\begin{iframe}[Puppet Trees]
+\item It is easy to follow what happens in 1 module
+\item It is easy to follow what happens in 1 Puppet Tree
+\item What about you having 5 Puppet Trees and 100 Modules?
+\end{iframe}
+\CenterSlide{First, some definitions}
+\begin{iframe}[Super Repo]
+    \item Repository that has Puppet Modules
+    \item Puppet Modules are submodules
+    \item One Repository / project
+    \item NOT one Repo / Environment
+\end{iframe}
+\begin{iframe}[Repository]
+    \item A Module
+    \item Does or does not have an upstream
+\end{iframe}
+\begin{iframe}[Internal Repository]
+    \item A repository we use in our super repos
+    \item We have full control on it
+    \item We do custom development here
+\end{iframe}
+\begin{iframe}[Upstream Repository]
+    \item A public repository
+    \item Managed by us or a 3rd party
+\end{iframe}
+\begin{iframe}[Source]
+    \item Repository hosting service
+    \item e.g Redmine, Github
+\end{iframe}
+\CenterSlide{The Problems}
+\picSlideBottom{workflow.png}{}
+\picSlideBottom{workflow2.png}{}
+\picSlideBottom{workflow3.png}{}
+\begin{iframe}[Problems]
+    \item Lagging behind upstream
+        \begin{itemize}
+            \item Bug fixes?
+            \item New features?
+        \end{itemize}
+    \item Being ahead upstream
+        \begin{itemize}
+            \item Code quality?
+            \item Maintenance cost
+        \end{itemize}
+    \item Submodules not up to date
+        \begin{itemize}
+            \item Different behaviours/env
+            \item Not getting improvements
+            \item Maintenance cost increases over time
+        \end{itemize}
+\end{iframe}
+\CenterSlide{Solving}
+\begin{iframe}[Differences with upstream]
+\item Pull upstream changes in internal repos
+\item Create pull requests
+\item Keep the modules clean (use "profiles" modules)
+\end{iframe}
+\begin{iframe}[Differences with subrepos]
+\item Being aware of the difference as soon as possible
+\end{iframe}
+\begin{iframe}[Side effects]
+\item Code review
+\item Cleaner modules
+\item Upstream tests
+\item Better modules for all
+\end{iframe}
+\begin{iframe}[Automating it!]
+\item Weekly PR Triage
+\item PyTriage
+\end{iframe}
+\CenterSlide{PyTriage}
+\begin{iframe}[PyTriage]
+\item Python Script
+\item Pluggable
+\item Open Source
+\item Uses GitPython
+\item Configured with inifile
+\item github.com/Inuits/PyTriage
+\end{iframe}
+\begin{iframe}[Source Plugins]
+\item Existing: redmine, github
+\item Clone URL
+\item Ticket URL
+\item Ticket status (using each tool API)
+\end{iframe}
+\begin{iframe}[Reporting Plugins]
+\item Existing: html, xunit, txt, graphite
+\item Enabled by the config file
+\item Reports to files, graphite,\dots
+\end{iframe}
+
+\begin{iframe}[Jenkins Integration]
+\item HTML reports (keeps history)
+\item xunit tests
+\item Mails
+\end{iframe}
+
+\CenterSlide{Configuration}
+\begin{frame}
+ \frametitle{Main configuration}
+ \lstinputlisting{config.ini}
+\end{frame}
+\begin{frame}
+ \frametitle{Defaults for repos}
+ \lstinputlisting{defaults.ini}
+\end{frame}
+\begin{frame}
+ \frametitle{Source}
+ \lstinputlisting{source.ini}
+\end{frame}
+\begin{frame}
+ \frametitle{Super Repo}
+ \lstinputlisting{super.ini}
+\end{frame}
+\begin{frame}
+ \frametitle{Git Repo - Simple}
+ \lstinputlisting{repo.ini}
+\end{frame}
+\begin{frame}
+ \frametitle{Git Repo - Full}
+ \lstinputlisting{repofull.ini}
+\end{frame}
+\begin{iframe}[Inifile? Extrapolation?]
+    \item One location to change repo's urls
+    \item One line can be enough for a repository
+    \item Inifile is easy to version control
+\end{iframe}
+\CenterSlide{Renderers}
+\CenterSlide{HTML}
+\picSlideBottom{triage.png}{}
+\picSlideBottom{repo.png}{}
+\CenterSlide{xunit (Jenkins)}
+\picSlideBottom{jenkins.png}{}
+\CenterSlide{graphite}
+\picSlideBottom{behindgr.png}{}
+\CenterSlide{Conclusion}
+\begin{iframe}
+\item Human effort is important
+\item Visual awareness too
+\item Generic, so take it with you @Customers
+\item Generic, so use it for something else than Puppet
+\end{iframe}
+
+
+
+

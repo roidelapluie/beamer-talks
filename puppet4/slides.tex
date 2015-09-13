@@ -1,0 +1,631 @@
+\titleSlide
+%\frame[b]{%
+%    \largepic{drawing.png}
+%}
+\frame{%
+    \frametitle{\$::user}
+    \framesubtitle{Julien Pivotto}
+    \begin{itemize}
+        \item{Open-Source consultant at {\inuits{}inuits\small.eu}}
+        \item{Puppet User since 2011}
+        \item{Speaker/attendee at Puppetcamps}
+        \item{Member of the Belgian PUG}
+        \item{Puppet core contributor}
+        \item{Puppet(labs) modules contributor}
+        \olditem{\textit{\ctr{@roidelapluie}} \ctr{on irc/twitter/github}}
+    \end{itemize}
+
+}
+\inuitsSlide
+%\CenterSlide{A short introduction to Puppet}
+%
+%\begin{iframe}[What is Puppet]
+%\item A Configuration Management tool
+%\item Server/Agent model or standalone
+%\item Goal: Define the state of the infrastructure
+%\item Automate common tasks and deployments
+%\end{iframe}
+%
+%\begin{iframe}[Terminology]
+%\item Resource: The definition of an "item" (package, service, file\dots)
+%\item Manifests: A file that contains a list of resources
+%\item Module: A collection of manifests (e.g a module can manage an apache setup)
+%\item Catalog: A list of resources that a node has to apply, that describes the wanted state
+%\end{iframe}
+%\begin{iframe}[In practice]
+%\item A client requests a catalog from the server
+%\item The server sends a catalog for that node with all the resources
+%\item The agent applies the catalog: install packages, files, starts services,\dots
+%\end{iframe}
+%\begin{iframe}[Other features]
+%\item PuppetDB: a storage for reports, resources\dots
+%\item Mcollective: an orchestration framework
+%\item Facter: collects informations about the current system and expose them with an api
+%\item Hiera: split data and code
+%\end{iframe}
+%
+\CenterSlide{Introduction}
+
+
+\begin{iframe}[Puppetmaster since 2011]
+\item Puppet 2.6/2.7
+\item Reports stored with activerecord
+\item Puppet Dashboard
+\item No hiera
+\item No PuppetDB
+\end{iframe}
+\begin{iframe}[Puppet 2.7 - June 2011]
+\item Ruby 1.9 support
+\item Apache 2.0 Licence
+\item The end of "random" catalog order
+\item Support for network devices
+\item Deprecation of dynamic variables
+\end{iframe}
+\begin{iframe}[Puppet 3.0.0 - October 2012]
+\item Support for 3rd parties gems
+\item Native hiera support
+\item Automatic hiera lookups
+\item Remove dynamic scope lookup
+\item Semantic versioning
+\end{iframe}
+\begin{iframe}[Puppet 3.x series]
+\item Future parser (3.2.0)
+\item "contain" keyword (3.4.0)
+\item directory environments (3.5.0)
+\end{iframe}
+\frame[b]{%
+    \largepic{4421810399_75d27102b4_o.jpg}
+\begin{center}\Huge{}\ctr{Puppet 4}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/mujitra/4421810399}
+}
+\begin{iframe}[The big picture]
+\item New DSL language
+\item All-in-one Package
+\item Puppetserver
+\end{iframe}
+\frame[b]{%
+    \largepic{code.png}
+\begin{center}\Huge{}\ctr{A new DSL}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Apache 2.0 License\\https://github.com/ke4qqq/puppet-cloudstack}
+}
+
+\begin{frame}\frametitle{Domain Specific Language}
+    \begin{center}
+        \huge{The goal of the Puppet DSL stays the same: describe the final state of your infrastructure.}
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        \huge{The new DSL gets closer to other programming languages: types, iterations, predictive ordering\dots}
+    \end{center}
+\end{frame}
+\frame[b]{%
+    \largepic{19543885696_aa036a416e_k.jpg}
+\begin{center}\Huge{}\ctr{Ordering}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/lambertclement/19543885696}
+}
+
+\begin{frame}
+    \frametitle{order.pp}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\LARGE,
+     }
+ \lstinputlisting{ex1/test.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Puppet 3.x}
+ \lstinputlisting{ex1/38.txt}
+ \end{frame}
+\begin{frame}
+    \frametitle{Puppet 4.x}
+ \lstinputlisting{ex1/42.txt}
+ \end{frame}
+ \begin{iframe}[Ordering]
+\item Always the same order
+\item Puppet 3.x: based on title-hash
+\item Puppet 4.x: order seen in the manifest
+\end{iframe}
+ \begin{iframe}[Puppet 4 ordering]
+ \item Time saver
+\item "Hides" complexity
+\item Align with other languages
+\item Still supports Require, Notify, \dots
+\item "real" dependencies should still be explicitely set (e.g cron job only installed if packages is installed)
+\end{iframe}
+
+% types
+
+\frame[b]{%
+    \largepic{6338281766_68b200c61b_b.jpg}
+\begin{center}\Huge{}\ctr{(Native) Data Types}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/ionics/6338281766}
+}
+\begin{iframe}[Data types are not new]
+\item Previously included in stdlib, 3rd party module
+\item stdlib contains functions to convert data types, check data types
+\item Nothing in Puppet Core
+\item Difficult to check the type of all the parameters
+\end{iframe}
+ \begin{frame}
+     \frametitle{Data Types}
+     \begin{center}
+         \LARGE{\texttt{String}}\pause\\
+         \LARGE{\texttt{Numeric}: \texttt{Integer}, \texttt{Float}}\pause\\
+         \LARGE{\texttt{Boolean}}\pause\\
+         \LARGE{\texttt{Array}}\pause\\
+         \LARGE{\texttt{Hash}}\pause\\
+         \LARGE{\texttt{Regexp}}\pause\\
+         \LARGE{\texttt{Undef}}\pause\\
+         \LARGE{\texttt{Catalogentry}: \texttt{Class}, \texttt{Resource}}
+    \end{center}
+\end{frame}
+
+\begin{frame}\frametitle{String}
+\begin{table}
+\begin{tabular}{rl}
+\texttt{String} & Any string \\\pause
+\texttt{String[2]} & Any string with at least 2 characters \\\pause
+\texttt{String[0,2]} & A string with at most 2 characters \\\pause
+\texttt{String[4,6]} & A string with at least 4 and at most 6 characters \\\pause
+\texttt{String[5,5]} & A string with 5 characters
+\end{tabular}
+\end{table}
+\center{Convert to string with: \texttt{"\$\{myvariable\}"}}
+\end{frame}
+\begin{frame}\frametitle{Numeric}
+    \begin{table}
+        \begin{tabular}{rl}
+\texttt{Numeric} & Float or integer \\\pause
+\texttt{Numeric[-1,1]} & Float or Integer between -1 and 1 (incl) \\\pause
+\texttt{Integer} & Any integer (from $-\infty$ to $\infty$) \\\pause
+\texttt{Integer[0]} & Positive Integer \\\pause
+\texttt{Integer[default, 0]} & Negative Integer \\\pause
+\texttt{Integer[-1,1]} & Integer between -1 and 1 (incl)  \\\pause
+\texttt{Float} & Floating point number \\\pause
+\texttt{Float[-3,3.14]} & Float between -3 and 3.14 (incl) \\
+\end{tabular}
+    \end{table}
+\center{Convert to Integer with the \texttt{scanf} function or \texttt{0+\$variable}}
+\end{frame}
+\begin{frame}\frametitle{Hash}
+    \begin{table}
+        \begin{tabular}{c}
+\texttt{Hash} \\ A Hash (key, value pairs)
+\vspace{4mm} \\\pause
+            \texttt{Hash[String, String]} \\ Hash with String as keys and values
+\vspace{4mm} \\\pause
+            \texttt{Hash[String, Integer]} \\ String as keys, Integer as values
+\vspace{4mm} \\\pause
+            \texttt{Hash[String, Integer, 1]} \\ Non empty hash
+\vspace{4mm} \\\pause
+            \texttt{Hash[String, Integer, default, 5]} \\ Hash with at most 5 entries
+\end{tabular}
+    \end{table}
+\end{frame}
+\begin{frame}\frametitle{Array}
+    \begin{table}
+        \begin{tabular}{c}
+            \texttt{Array} \\ An array (list)
+\vspace{4mm} \\\pause
+            \texttt{Array[String]} \\ Array with String
+\vspace{4mm} \\\pause
+            \texttt{Array[String, 1]} \\ Non empty Array
+\vspace{4mm} \\\pause
+            \texttt{Array[String, default, 5]} \\ Array with at most 5 entries
+\end{tabular}
+    \end{table}
+\end{frame}
+\begin{frame}\frametitle{Undef}
+    \begin{center}
+        \LARGE
+        Eventually! A clear type for Undef (was very confusing in the past: nil? string? symbol?)
+    \end{center}
+\end{frame}
+\frame[b]{%
+    \largepic{4666231979_2644531af8_b.jpg}
+\begin{center}\Huge{}\ctr{Abstract Data Types}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/webtreatsetc/4666231979}
+}
+\begin{frame}\frametitle{Optional}
+    \begin{center}
+\LARGE
+\texttt{Optional[String]}: String or Undef\\
+\texttt{Optional[Integer]}: Integer or Undef
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{NotUndef}
+    \begin{center}
+\LARGE
+Everything but Undef.\\
+\texttt{NotUndef[Data]}: Anything that matches Data but not Undef.\\
+Example: \texttt{[Undef]}
+    \end{center}
+\end{frame}
+%\texttt{NotUndef}
+%\texttt{Variant[Integer, String]}: Integer or String
+%\item {\texttt{Pattern[/A-Z/, \\d]}: String that matches regex}
+%\item {\texttt{Enum["foo", "bar"]}: String "foo" or "bar"}
+%\item {\texttt{Tuple[String, Integer]}: An array (["a", 1])}
+%\item {\texttt{Struct}: Advanced hashes}
+\begin{frame}\frametitle{Variant}
+    \begin{center}
+\LARGE
+\texttt{Variant[Integer, String]: An Integer or a String}
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{Pattern}
+    \begin{center}
+\LARGE
+\texttt{Pattern[Regex, Regex]}: Strings match regexes
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{Enum}
+    \begin{center}
+\LARGE
+\texttt{Enum["true", "false"]: "true" or "false" (strings)}
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{Tuple}
+    \begin{center}
+\LARGE
+\texttt{Tuple[Integer, String]: An array like [1, "a"]}
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{Struct}
+    \begin{center}
+\LARGE
+Advanced hash.\\
+\texttt{Struct[\{"username" => String, "uid" => Integer[0]\}]}\\
+Matches \texttt{\{"username" => "tux", "uid" => 1\}}
+    \end{center}
+\end{frame}
+%\item {\texttt{Scalar}: Number, String, Boolean, Regex}
+%\end{iframe}
+%\begin{iframe}[Parent Data Types]
+%\item {\texttt{Data}: Scalar + Undef, Array[Data], Hash[Scalar, Data]}
+%\item {\texttt{Collection}: Hash, Array}
+%\item {\texttt{Catalogentry}: Resource, Class}
+%\item {\texttt{Any}}
+%\end{iframe}
+\begin{frame}\frametitle{Scalar}
+    \begin{center}
+\LARGE
+Same as \texttt{Variant[Numeric, String, Boolean, Regex]}
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{Data}
+    \begin{center}
+\LARGE
+Same as \texttt{Variant[Scalar, Undef, Array[Data], Hash[Scalar, Variant[Data]]}
+    \end{center}
+\end{frame}
+\begin{frame}\frametitle{Any}
+    \begin{center}
+\LARGE
+Anything
+    \end{center}
+\end{frame}
+\frame[b]{%
+    \largepic{7439512656_ae58012e17_k.jpg}
+\begin{center}\Huge{}\ctr{Playing with types}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/jdhancock/7439512656}
+}
+\begin{frame}
+    \frametitle{Types in conditions}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{types/types.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Types in case statements}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{types/types2.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Types in parameters}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{types/types3.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Type checking}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{types/types4.pp}
+ \end{frame}
+
+% merge
+\frame[b]{%
+    \largepic{2295022876_3cb19f4fb7_o.jpg}
+\begin{center}\Huge{}\ctr{Array, Hash merge}\end{center}
+\sethlcolor{black}
+\flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/willmx/2295022876}
+}
+\begin{frame}
+    \frametitle{Hashes}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{ex2/1.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Arrays}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{ex2/2.pp}
+ \end{frame}
+
+ \begin{iframe}[Merges]
+ \item No more need for stdlib
+\item Cleaner code
+\end{iframe}
+
+
+\frame[b]{%
+    \largepic{3269784239_e208c5b968_o.jpg}
+\begin{center}\Huge{}\ctr{Functions}\end{center}
+    \flushright\minuscule{\color{black}Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/zzpza/3269784239}
+}
+\begin{frame}
+    \frametitle{Puppet 4 Function}
+    \lstset{language=ruby}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{fc/fc.rb}
+ \end{frame}
+\begin{frame}
+    \frametitle{Puppet 4 Function}
+    \lstset{language=ruby}
+    \lstset{%
+         basicstyle=\tiny,
+     }
+ \lstinputlisting{fc/fc2.rb}
+ \end{frame}
+\frame[b]{%
+    \largepic{8114399667_30e7770e7d_k.jpg}
+\begin{center}\Huge{}\ctr{Loops and new built-in functions}\end{center}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/squeaks2569/8114399667}
+}
+
+\begin{frame}
+    \frametitle{Loops: Array}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{loops/1.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Loops: Hash}
+    \lstset{language=Puppet}
+    \lstset{%
+  %       basicstyle=\large,
+     }
+ \lstinputlisting{loops/2.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{Loops: reduce}
+    \lstset{language=Puppet}
+    \lstset{%
+ %        basicstyle=\large,
+     }
+ \lstinputlisting{loops/3.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{with: "private" scope}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{misc/1.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{filter}
+    \lstset{language=Puppet}
+    \lstset{%
+%         basicstyle=\large,
+     }
+ \lstinputlisting{misc/2.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{access resource parameters}
+    \lstset{language=Puppet}
+    \lstset{%
+%         basicstyle=\large,
+     }
+ \lstinputlisting{misc/3.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{ruby-style~.~syntax (chaining)}
+    \lstset{language=Puppet}
+    \lstset{%
+%         basicstyle=\large,
+     }
+ \lstinputlisting{misc/4.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{HEREDOC}
+    \lstset{language=Puppet}
+    \lstset{%
+%         basicstyle=\large,
+     }
+ \lstinputlisting{misc/5.pp}
+ \end{frame}
+\frame[b]{%
+    \largepic{3267227227_660b6ab4f4_b.jpg}
+\begin{center}\Huge{}\ctr{Templates}\end{center}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/mrbill/3267227227}
+}
+ \begin{iframe}[Templates]
+ \item Can be written in Puppet Code (EPP)
+\item Gets their own variables
+\item Only useful since the new DSL
+\item function \texttt{epp} and \texttt{inline\_epp}
+\end{iframe}
+\begin{frame}
+    \frametitle{EPP templates}
+    \lstset{language=Puppet}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{misc/tmp.pp}
+ \end{frame}
+\begin{frame}
+    \frametitle{EPP templates}
+    \lstset{%
+         basicstyle=\large,
+     }
+ \lstinputlisting{misc/tmp.epp}
+ \end{frame}
+
+\frame[b]{%
+    \largepic{5299374697_6b97479c95_b.jpg}
+\begin{center}\Huge{}\ctr{All-in-One package}\end{center}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution 2.0 License\\https://www.flickr.com/photos/creative\_tools/5299374697}
+}
+
+\begin{iframe}[All-in-One package: Facts]
+\item All the client is in one RPM
+\item Repository is called PC1
+\item Puppet Collection 1
+\item puppet-agent RPM contains ruby and all the deps
+\item Everything is under /etc/puppetlabs, /opt/puppetlabs, \dots
+\end{iframe}
+\begin{iframe}[All-in-One package: Pros]
+\item Everyone gets the same ruby version
+\item One RPM, one repository
+\item Everything can be optimized
+\item Only one version to check for consistency
+\end{iframe}
+\begin{iframe}[All-in-One package: Cons (1/2)]
+\item Not rebuildable (toolchain (ezbake/vanagon) not released/not open-source)
+\item PL can patch Ruby, preventing people that use other methods to get the same behaviour
+\item We are dependent on PL for updates (e.g OpenSSL)
+\item Hidden version numbers (Puppet-agent version is semantic but abstract)
+\item Not reusing shared libs
+\end{iframe}
+\begin{iframe}[All-in-One package: Cons (2/2)]
+\item How can we guess such paths? \texttt{/opt/puppetlabs/puppet/cache} should have been at least \texttt{/var/opt/puppetlabs/puppet}
+\end{iframe}
+\begin{iframe}[Batteries included]
+\item Hiera, Augeas
+\item Facter, CFacter
+\item Mcollective
+\item OpenSSL
+\item Ruby and gem dependencies
+\end{iframe}
+\begin{iframe}[The case of Fedora]
+\item Fedora 23 ships Puppet 4
+\item NOT using the AIO package
+\item Might be rebuilt one day for EL
+\end{iframe}
+% AIO
+
+\frame[b]{%
+    \largepic{6362329323_56c96f68c1_o.jpg}
+\begin{center}\Huge{}\ctr{Migration and stuff}\end{center}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/photos/26116471@N03/6362329323}
+}
+
+\begin{iframe}[Puppetserver]
+\item A Puppet master written in clojure
+\item Runs on top of a jvm
+\item Put it behind a reverse proxy
+\item Slow start but better performances
+\item Not much to say, it stays out of my way so it's good
+\item Puppetserver 2.1 is compatible with Puppet 3 and 4 clients
+\end{iframe}
+\begin{iframe}[Prepare yourself]
+\item Update to latest Puppet 3.x
+\item Use the Future parser
+\item Update to latest Puppetserver
+\end{iframe}
+\begin{iframe}[Update your clients]
+\item https://github.com/puppetlabs/puppetlabs-puppet\_agent
+\item Do not forget to edit your cronjobs (change PATH to /usr/bin:/opt/puppetlabs/bin)
+\item puppet will be in /opt/puppetlabs/bin
+\end{iframe}
+\begin{iframe}[Everything is not there yet]
+\item Puppetboard and Foreman does not work yet (new PuppetDB API)
+\item Good news: Puppetexplorer does (I have not tested)
+\end{iframe}
+
+\frame[b]{%
+    \largepic{19824185788_f8d7ae406a_k.jpg}
+\begin{center}\Huge{}\ctr{Conclusion}\end{center}
+    \flushright\minuscule{Licensed under a Creative Commons Attribution-ShareAlike 2.0 License\\https://www.flickr.com/photos/olivierpechenet/19824185788}
+}
+\begin{iframe}[Good job :-)]
+\item Good job, Puppetlabs (and community)
+\item The new DSL was a hard work
+\item It works well
+\item I have seen only minor bugs
+\item It is still a lot backward-compatible (with clean code\dots)
+\item Please open-source the toolchain
+\end{iframe}
+
+\begin{iframe}[Regarding the new DSL]
+\item A lot of new powers
+\item It's a language
+\item Time to write new recommendations, best practices
+\item It can look awesome or horrible
+\item Puppet lint and code review to the rescue!
+\end{iframe}
+
+\begin{iframe}[Is it time to move?]
+\item If you have a test environment, yes
+\item Otherwise I would still wait for more bugfixes
+\item But we are already at 4.2.1
+\item You should a least prepare yourself
+\item I recommend github.com/theforeman/puppet-puppet to manage puppet
+\end{iframe}
+
+\begin{iframe}[The new DSL]
+\item Will not be everywhere
+\item A lot of stuff could be done with stdlib
+\item First in roles, profiles, node manifests
+\item Waiting for PL to decomission 3.x for the rest
+\item Maybe we will see puppet4-only modules (but is that what we want?)
+\end{iframe}
+
+\begin{iframe}[Puppet 4]
+\item Full of new features
+\item Now has a powerful DSL
+\item Stays declarative
+\item Is more predictive
+\end{iframe}
+
+\CenterSlide{Any Question?}
+% Puppet server / rproxy / puppet-puppet
+
+ % upgrade
+\begin{iframe}[Bio]
+\item http://puppet-on-the-edge.blogspot.com/
+\item https://www.devco.net/
+\item http://docs.puppetlabs.com/
+\end{iframe}
+
+\contactSlide
+
+
