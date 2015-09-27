@@ -59,30 +59,34 @@
 }
 
 \newcommand{\contactSlide}{%
-    \frame{%
-        \frametitle{Contact}
-        \begin{columns}[T]
-            \begin{column}{.5\textwidth}
-                \begin{large}
-                    \ctr{Julien Pivotto}\\
-                    \ctr{julien@inuits.eu}\\
-                    \ctr{@roidelapluie}
-                \end{large}
-            \end{column}
-            \begin{column}{.5\textwidth}
-                \vspace{1.2cm}
-                \begin{center}
-                    \begin{small}
-                        \includegraphics[height=2cm]{../images/inuits.png}\\
-                        \vspace{0.3cm}
-                        {\huge\inuits{}\ctr{inuits}}\\
-                        \ctr{https://inuits.eu}\\
-                        \ctr{info@inuits.eu}\\
-                        \ctr{+32 473 441 636}
-                    \end{small}
-                \end{center}
-            \end{column}
-        \end{columns}
+    {%
+    \renewcommand{\insertLogo}{}%
+
+        \frame{%
+            \frametitle{Contact}
+            \begin{columns}[T]
+                \begin{column}{.5\textwidth}
+                    \begin{large}
+                        \ctr{Julien Pivotto}\\
+                        \ctr{julien@inuits.eu}\\
+                        \ctr{@roidelapluie}
+                    \end{large}
+                \end{column}
+                \begin{column}{.5\textwidth}
+                    \vspace{1.2cm}
+                    \begin{center}
+                        \begin{small}
+                            \includegraphics[height=2cm]{../images/inuits.png}\\
+                            \vspace{0.3cm}
+                            {\huge\inuits{}\ctr{inuits}}\\
+                            \ctr{https://inuits.eu}\\
+                            \ctr{info@inuits.eu}\\
+                            \ctr{+32 473 441 636}
+                        \end{small}
+                    \end{center}
+                \end{column}
+            \end{columns}
+        }
     }
 }
 
