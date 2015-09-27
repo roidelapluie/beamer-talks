@@ -94,9 +94,9 @@
     }
 
 \newcommand{\titleSlide}{\frame[plain,t]{\titlepage}}
-\newcommand{\picSlide}[5][][][][][black]{%
+\newcommand{\picSlide}[5][black]{%
 \frame[b]{%
-    \largepic{#1}
-\begin{center}\Huge{}\ctr{#4}\end{center}
-\flushright\minuscule{\color{#5}Licensed under a Creative Commons #3 License\\#2}
+    \largepic{#2}
+\begin{center}\Huge{}\ctr{#5}\end{center}
+\flushright\minuscule{\color{#1}Licensed under a Creative Commons #4 License\\#3}
 }}
