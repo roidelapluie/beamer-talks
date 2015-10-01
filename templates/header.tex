@@ -150,7 +150,7 @@
     }
 
 \let\olditem\item
-\newcommand{\largepic}[1]{\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=1.77777\paperheight,height=\paperheight]{#1}};}
+\newcommand{\largepic}[1]{\tikz[remember picture,overlay] \node[inner sep=0pt] at (current page.center){\includegraphics[width=\paperwidth,height=\paperheight]{#1}};}
 \newcommand{\ctr}[1]{\contour{black}{#1}}
 \renewcommand{\item}[1]{\olditem{\ctr{#1}}}
 
