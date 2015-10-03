@@ -1,0 +1,8 @@
+ssh_authorized_key {
+  'jenkins':
+    type      => 'ssh-rsa',
+      key     => 'AAAAKZ6TwZl3ikhY42clyY/De7J',
+      user    => 'jenkins',
+      options => 'from="192.168.10.1"'
+}
+

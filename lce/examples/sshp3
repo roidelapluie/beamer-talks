@@ -1,0 +1,5 @@
+user {
+  'jenkins':
+    purge_ssh_keys => true,
+}
+

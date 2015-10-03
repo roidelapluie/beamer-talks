@@ -1,0 +1,4 @@
+Host web1
+Proxycommand ssh proxy nc %h %p
+Host proxy
+Proxycommand ssh out nc %h %p

@@ -1,0 +1,405 @@
+\titleSlide
+\frame{%
+    \frametitle{Match User roidelapluie}
+    \framesubtitle{Julien Pivotto}
+    \begin{itemize}
+        \item{Sysadmin at {\inuits{}inuits\small.eu}}
+        \item{FLOSS user since 2004}
+        \item{DevOps believer}
+        \olditem{\textit{\ctr{@roidelapluie}} \ctr{on irc/twitter/github}}
+    \end{itemize}
+
+}
+\inuitsSlide
+
+
+\picSlide{\aspt10012162166_bdba011392_h.jpg}{https://www.flickr.com/photos/80497449@N04/10012162166}{Attribution 2.0}{World, 2015}
+
+\begin{iframe}[Connected devices]
+\item Mainframes
+\item Servers
+\item Virtual machines
+\item Containers
+\item IoT
+\end{iframe}
+
+\begin{iframe}[Entrance Doors]
+\item Physical Access
+\item Telnet
+\item RSH
+\item SSH
+\item HTTPS
+\item \dots
+\end{iframe}
+
+\begin{iframe}[SSH]
+\item Dozens of implementations
+\item OpenSSH
+\item Dropbear (embedded)
+\item Closed-source
+\item \dots
+\end{iframe}
+
+\begin{iframe}[SSH]
+\item Dozens of usecases
+\item Shell access and TCP Tunelling
+\item Code (git)
+\item File transfert (sftp)
+\item X terminal (x2go)
+\item Automation (ansible)
+\item \dots
+\end{iframe}
+
+
+\picSlide{\aspt5399766800_f73442fdb1_o.jpg}{https://www.flickr.com/photos/pennuja/5399766800}{Attribution 2.0}{OpenSSH}
+
+\begin{iframe}[OpenSSH]
+\item Developed by the OpenBSD project
+\item Released first in 1995
+\item Server/Client implementation
+\item Included in BSD, Linux, Cygwin, Mac OS X, \dots
+\item Available in many other platforms
+\end{iframe}
+
+\begin{iframe}[Out of scope]
+\item Firewalling, OS, \dots
+\item Basic tips: RootLogin, Pubkeys, \dots
+\item Crypto/Encryption/Key Exchanges https://stribika.github.io/2015/01/04/secure-secure-shell.html
+\end{iframe}
+
+\picSlide{\aspt11406986014_f4ae50aa1a_k.jpg}{https://www.flickr.com/photos/111692634@N04/11406986014}{Asstribution-ShareAlike 2.0}{Security}
+\begin{iframe}[Common sense]
+\item Do you need SSH? (immutable infra, containers\dots)
+\item KISS
+\item Chose what will get public IP and then exposition.. hypervisors vs vms?
+\item Port 22 is not Evil
+\end{iframe}
+\picSlide[white]{\aspt6187271613_239800ed8d_o.jpg}{https://www.flickr.com/photos/56001405@N06/6187271613}{Attribution 2.0}{Server-side}
+
+\begin{iframe}["Server config"]
+\item /etc/ssh/sshd\_config
+\item Restart of the service does not kill current ssh sessions
+\end{iframe}
+
+\picSlide{\aspt7729300102_ec896ae4ab_k.jpg}{https://www.flickr.com/photos/84388958@N03/7729300102}{Attribution 2.0}{Allow/Deny rules}
+\begin{frame}[fragile]
+\frametitle{AllowUsers}
+\lstset{basicstyle=\large\fsfont}
+\begin{lstlisting}
+AllowUsers jenkins
+AllowUsers jenkins nagios@172.31.29.5
+AllowUsers jenkins nagios@172.31.29.0/12
+\end{lstlisting}
+\begin{center}AllowUsers is exclusive\end{center}
+
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{AllowGroups}
+\lstset{basicstyle=\large\fsfont}
+\begin{lstlisting}
+AllowGroups staff jenkins
+\end{lstlisting}
+\begin{center}AllowGroups is exclusive\end{center}
+
+\end{frame}
+\begin{iframe}[Allow* ordering]
+\item DenyUsers
+\item AllowUsers
+\item DenyGroups
+\item AllowGroups
+    \end{iframe}
+    \begin{iframe}[Match]
+    \item Match + conditions
+    \item reads until next Match or EOF
+    \end{iframe}
+
+\begin{frame}[fragile]
+\frametitle{Match}
+\lstset{basicstyle=\large\fsfont}
+\begin{lstlisting}
+AllowGroups staff
+Match Address 172.31.16.8
+AllowGroups staff jenkins
+\end{lstlisting}
+\end{frame}
+
+\picSlide[white]{\aspt7069748077_f20b306c09_k.jpg}{https://www.flickr.com/photos/armandoh2o/7069748077}{Attribution 2.0}{Trust On First Use}
+
+\begin{frame}[fragile]
+\frametitle{TOFU}
+\lstset{basicstyle=\large\fsfont}
+\lstinputlisting{examples/hostkey}
+\end{frame}
+
+\begin{iframe}[Trust on first use]
+\item Who checks the key on the server?
+\item Who says no?
+\item Security fatigue
+\end{iframe}
+
+\begin{iframe}[Alternative to TOFU (1/2)]
+\item Automation
+\item Export keys from hosts
+\item Collect them from hosts
+\item Apply then to /etc/ssh/known\_hosts
+\end{iframe}
+
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+\lstinputlisting[language=Puppet]{examples/puppet1}
+\end{frame}
+
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+\lstinputlisting[language=Puppet]{examples/puppet2}
+\end{frame}
+
+\begin{iframe}[Alternative to TOFU (2/2)]
+\item DNS
+\item Export keys in SSHFP DNS records
+\item Can be secured by DNSSEC
+\item https://github.com/jpmens/facts2sshfp
+\end{iframe}
+
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+\lstinputlisting{examples/tofu1}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+\begin{lstlisting}
+ssh -o VerifyHostKeyDNS=yes example.com
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+\lstinputlisting{examples/tofu2}
+\end{frame}
+
+\picSlide{\aspt4498078166_8fae224feb_o.jpg}{https://www.flickr.com/photos/brenda-starr/4498078166}{Attribution 2.0}{Authorized keys}
+
+\begin{frame}[fragile]
+%\lstset{basicstyle=\large\fsfont}
+\lstinputlisting{examples/sshk.pub}
+\begin{itemize}
+    \item One key, one user
+    \item Always with a password
+    \item Distribute them in an automated way
+\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+%\lstset{basicstyle=\large\fsfont}
+\lstinputlisting{examples/sshk.pub.opt}
+\end{frame}
+\begin{frame}[fragile]
+%\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/sshp1}
+\end{frame}
+\begin{frame}[fragile]
+%\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/sshp2}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Purge undefined keys!}
+%\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/sshp3}
+\end{frame}
+
+\picSlide[white]{\aspt0client.png}{@roidelapluie}{Zero}{Client Side}
+\begin{iframe}[Client configuration]
+\item \$HOME/.ssh/config
+\item /etc/ssh/ssh\_config
+\end{iframe}
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/client1}
+\end{frame}
+\picSlide{\aspt269786597_1436f8b3f2_o.jpg}{https://www.flickr.com/photos/sarahrosenau/269786597}{Attribution-ShareAlike 2.0}{SSH Hops}
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/client2}
+\end{frame}
+\begin{iframe}[SSH Hops]
+\item Acces restricted areas
+\item Keeps your private keys in your machine
+\item No need for agent forwarding
+\end{iframe}
+\picSlide{\aspt2661016046_7e82410f24_o.jpg}{https://www.flickr.com/photos/restlessglobetrotter/2661016046}{Attribution-ShareAlike 2.0}{Sockets}
+\begin{frame}[fragile]
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/client3}
+\end{frame}
+\begin{iframe}[SSH Sockets]
+\item Speed up reconnection time
+\item Do not renegotiate each time
+\item Useful for git
+\end{iframe}
+
+\picSlide{\aspt4747872021_5fc2b65787_o.jpg}{https://www.flickr.com/photos/horiavarlan/4747872021}{Attribution 2.0}{Stopping OpenSSH}
+\begin{frame}[fragile]
+    \frametitle{Send to background}
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/stop1}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Pause}
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/stop2}
+\end{frame}
+\begin{frame}[fragile]
+    \frametitle{Kill the session}
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/stop3}
+\end{frame}
+\picSlide[white]{\aspt5174842932_b33e001cab_o.jpg}{https://www.flickr.com/photos/hanuska/5174842932}{Attribution-ShareAlike 2.0}{Tunnels}
+\begin{iframe}[Tunnels]
+\item TCP Tunnels
+\item SOCKS proxy
+\end{iframe}
+\begin{iframe}[Tunnels]
+\item Local TCP Port Forwarding: give remote acces to local port
+\item Remote TCP Port Forwarding: get access to remote ports
+\end{iframe}
+
+\begin{frame}
+    \frametitle{Local TCP Port Forwarding}
+\begin{center}
+    \includegraphics[height=.34\paperheight]{drawing-1.png}
+\end{center}
+\begin{flushright}
+    \tiny\color{white}Icons from http://www.opensecurityarchitecture.org/cms/library/icon-library\\and the Tango Icons project
+\end{flushright}
+\end{frame}
+\begin{frame}
+    \frametitle{Local TCP Port Forwarding}
+\begin{center}
+    \includegraphics[height=.34\paperheight]{drawing-2.png}
+\end{center}
+\begin{flushright}
+    \tiny\color{white}Icons from http://www.opensecurityarchitecture.org/cms/library/icon-library\\and the Tango Icons project
+\end{flushright}
+\end{frame}
+\begin{frame}
+    \frametitle{Local TCP Port Forwarding}
+\begin{center}
+    \includegraphics[height=.34\paperheight]{drawing-3.png}
+\end{center}
+\begin{flushright}
+    \tiny\color{white}Icons from http://www.opensecurityarchitecture.org/cms/library/icon-library\\and the Tango Icons project
+\end{flushright}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Local TCP Tunnel example}
+\begin{itemize}
+\item User A is natted behind a firewall
+\item He wants to give User B access to local SSH daemon
+\end{itemize}
+\begin{lstlisting}
+userA@hostA> ssh -NR 22222:localhost:22 userA@hostB
+\end{lstlisting}
+\begin{lstlisting}
+userB@hostB> ssh -p 22222 localhost
+\end{lstlisting}
+\begin{center}-N is for No Shell\end{center}
+
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{Remote Tunnel example}
+\begin{itemize}
+\item User A is behind a firewall that blocks VNC port
+\item He wants to access User B local VNC daemon
+\end{itemize}
+\begin{lstlisting}
+userA@hostA> ssh -NR 5900:localhost:5900 userA@hostB
+userA@hostA> vncviewer localhost
+\end{lstlisting}
+
+\end{frame}
+\begin{frame}[fragile]
+\frametitle{SOCKS Proxy}
+\begin{itemize}
+\item "Dynamic" port forwarding
+\item Enable UDP, TCP, \dots
+\item Creates a SOCKS5 proxy
+\end{itemize}
+\begin{lstlisting}
+userA@hostA> ssh -ND 9500 userA@hostB
+userA@hostA> proxychains wget http://example.com
+\end{lstlisting}
+
+\end{frame}
+
+\picSlide{\aspt8559728371_5f21dee03c_k.jpg}{https://www.flickr.com/photos/86639298@N02/8559728371}{Attribution 2.0}{Tools}
+
+\begin{iframe}[ssh-agent]
+\item Stores your private key in memory
+\item eval \$(ssh-agent)
+\item ssh-add; ssh-add -t 1h foo.key
+\item ssh-add -x (lock)
+\item ssh-add -X (unlock)
+\item Part of OpenSSH
+\end{iframe}
+\begin{iframe}[screen]
+\item Keep session accross ssh connection
+\item Have multiple shell `windows'
+\item Run long command and keep them running
+\item screen (launch new session)
+\item Ctrl+a d (detach)
+\item screen -dx (detach and reattach)
+\item ssh host -t screen -dx
+\end{iframe}
+\begin{iframe}[reptyr]
+\item Attach a long running process to the current terminal
+\item Idea: launch a screen and rattach another process inside
+\item Useful when you forgot to launch your screen before
+\item reptyr -p PID
+\end{iframe}
+
+\begin{iframe}[vim]
+\item Edit files remotely with scp
+\item vim scp://web//etc/hosts
+\end{iframe}
+
+\picSlide{\aspt4424199420_48b7b4c5bc_o.jpg}{https://www.flickr.com/photos/freddyfromutah/4424199420}{Attribution 2.0}{Conclusion}
+\begin{iframe}[Conclusion]
+    \item SSH is still part of modern infrastructures
+    \item Lots of other projects rely on it
+    \item You can harden it in a lot of ways
+    \item There is a lot of things to discover!
+    \end{iframe}
+
+    \begin{iframe}[Homework]
+    \item SSH certificate authority
+    \item command= permitopen=
+    \item Match blocks
+    \item sshfs
+    \item \dots
+    \end{iframe}
+
+
+% homework --- ssh certificates
+
+
+% Agent -- Agent forwarding
+%         ssh-agent
+
+% Server -- Allow/Deny Users,Groups
+% Distributing keys -- Automation or DNS
+% PermitOpen
+% PasswordAuthentication
+
+
+% automation
+
+% purge
+% augeas
+
+
+\CenterSlide{Any Question?}
+
+\contactSlide
+

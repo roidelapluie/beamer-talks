@@ -1,0 +1,13 @@
+# saz/puppet-ssh - ASL 2.0
+if $::sshrsakey {
+  @@sshkey { "${::fqdn}_rsa":
+    ensure       => present,
+    host_aliases => $host_aliases,
+    type         => rsa,
+    key          => $::sshrsakey,
+  }
+} else {
+  @@sshkey { "${::fqdn}_rsa":
+    ensure       => absent,
+  }
+}

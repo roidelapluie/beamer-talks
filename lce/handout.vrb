@@ -1,0 +1,3 @@
+\frametitle{Kill the session}
+\lstset{basicstyle=\large\fsfont}
+    \lstinputlisting{examples/stop3}
