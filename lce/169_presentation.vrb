@@ -1,3 +1,11 @@
-\frametitle{Purge undefined keys!}
-%\lstset{basicstyle=\large\fsfont}
-    \lstinputlisting{examples/sshp3}
+\frametitle{SOCKS Proxy}
+\begin{itemize}
+\item "Dynamic" port forwarding
+\item Enable UDP, TCP, \dots
+\item Creates a SOCKS5 proxy
+\end{itemize}
+\begin{lstlisting}
+userA@hostA> ssh -ND 9500 userA@hostB
+userA@hostA> proxychains wget http://example.com
+\end{lstlisting}
+
