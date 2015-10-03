@@ -18,6 +18,11 @@ presentation:
 	rm *.aux *.log *.nav *.out *.snm *.toc *.xwm||true
 
 
+handout169:
+	xelatex 169_handout.tex
+	xelatex 169_handout.tex
+	rm *.aux *.log *.nav *.out *.snm *.toc *.xwm||true
+
 handout:
 	xelatex handout.tex
 	xelatex handout.tex
