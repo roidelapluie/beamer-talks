@@ -309,10 +309,28 @@ userA@hostA> ssh -NR 22222:localhost:22 userA@hostB
 userB@hostB> ssh -p 22222 localhost
 \end{lstlisting}
 \begin{center}-N is for No Shell\end{center}
+\begin{frame}
+    \frametitle{Remote TCP Port Forwarding}
+\begin{center}
+    \includegraphics[height=.34\paperheight]{drawing-4.png}
+\end{center}
+\begin{flushright}
+    \tiny\color{white}Icons from http://www.opensecurityarchitecture.org/cms/library/icon-library\\and the Tango Icons project
+\end{flushright}
+\end{frame}
+\begin{frame}
+    \frametitle{Remote TCP Port Forwarding}
+\begin{center}
+    \includegraphics[height=.34\paperheight]{drawing-5.png}
+\end{center}
+\begin{flushright}
+    \tiny\color{white}Icons from http://www.opensecurityarchitecture.org/cms/library/icon-library\\and the Tango Icons project
+\end{flushright}
+\end{frame}
 
 \end{frame}
 \begin{frame}[fragile]
-\frametitle{Remote Tunnel example}
+\frametitle{Remote Port Forwarding example}
 \begin{itemize}
 \item User A is behind a firewall that blocks VNC port
 \item He wants to access User B local VNC daemon
