@@ -1,11 +1,20 @@
-\frametitle{SOCKS Proxy}
+\frametitle{Local TCP Tunnel example}
 \begin{itemize}
-\item "Dynamic" port forwarding
-\item Enable UDP, TCP, \dots
-\item Creates a SOCKS5 proxy
+\item User A is natted behind a firewall
+\item He wants to give User B access to local SSH daemon
 \end{itemize}
 \begin{lstlisting}
-userA@hostA> ssh -ND 9500 userA@hostB
-userA@hostA> proxychains wget http://example.com
+userA@hostA> ssh -NR 22222:localhost:22 userA@hostB
 \end{lstlisting}
-
+\begin{lstlisting}
+userB@hostB> ssh -p 22222 localhost
+\end{lstlisting}
+\begin{center}-N is for No Shell\end{center}
+\begin{frame}
+    \frametitle{Remote TCP Port Forwarding}
+\begin{center}
+    \includegraphics[height=.34\paperheight]{drawing-4.png}
+\end{center}
+\begin{flushright}
+    \tiny\color{white}Icons from http://www.opensecurityarchitecture.org/cms/library/icon-library\\and the Tango Icons project
+\end{flushright}
