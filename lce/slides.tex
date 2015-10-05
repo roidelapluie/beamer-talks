@@ -336,7 +336,7 @@ userB@hostB> ssh -p 22222 localhost
 \item He wants to access User B local VNC daemon
 \end{itemize}
 \begin{lstlisting}
-userA@hostA> ssh -NR 5900:localhost:5900 userA@hostB
+userA@hostA> ssh -NL 5900:localhost:5900 userA@hostB
 userA@hostA> vncviewer localhost
 \end{lstlisting}
 
@@ -390,6 +390,7 @@ userA@hostA> proxychains wget http://example.com
 \picSlide{\aspt4424199420_48b7b4c5bc_o.jpg}{https://www.flickr.com/photos/freddyfromutah/4424199420}{Attribution 2.0}{Conclusion}
 \begin{iframe}[Conclusion]
     \item SSH is still part of modern infrastructures
+    \item It should be part of what you automate/control
     \item Lots of other projects rely on it
     \item You can harden it in a lot of ways
     \item There is a lot of things to discover!
