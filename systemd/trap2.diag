@@ -1,0 +1,18 @@
+digraph G {
+bgcolor="transparent"
+"Package A"  [color="white", style=filled]
+"Unit file A" [color="white", style=filled]
+"Package B"  [color="white", style=filled]
+"Unit file B" [color="red", style=filled]
+"systemctl daemon-reload" [color="grey40", style=filled]
+"Service A" [color="grey40", style=filled]
+"Package A"  -> "Service A" [color=white]
+"Unit file A" -> "systemctl daemon-reload" [color=white]
+"systemctl daemon-reload" -> "Service A" [color=grey40]
+"Service B" [color="grey40", style=filled]
+"Package B"  -> "Service B" [color=white]
+"Unit file B" -> "systemctl daemon-reload" [color=red]
+"systemctl daemon-reload" -> "Service B" [color=grey40]
+"Unit file A" -> "Service A" [color=grey40]
+"Unit file B" -> "Service B" [color=grey40]
+}

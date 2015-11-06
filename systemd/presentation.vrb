@@ -1,0 +1,16 @@
+\frametitle{Partial override example}
+    \center{\large/etc/systemd/system/httpd.service.d/niceness.conf}
+\lstset{basicstyle=\large\fsfont}
+\begin{lstlisting}
+               [Service]
+               Nice=3
+\end{lstlisting}
+\note{\begin{enumerate}
+\olditem how complex was this before
+\olditem if you want this on diff env
+\olditem diff httpd release
+\olditem just one or multiple property
+\olditem systemctl cat
+\olditem niceness is a basic example
+\olditem change start command, add dependencies
+\end{enumerate}}

@@ -1,0 +1,7 @@
+digraph G {
+bgcolor="transparent"
+Package [color="white", style=filled]
+"Init script" [color="white", style=filled]
+Service [color="white", style=filled]
+Package -> "Init script" -> Service [color=white]
+}

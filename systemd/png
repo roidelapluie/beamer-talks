@@ -1,0 +1,15 @@
+digraph G {
+	graph [bb="0,0,139,126"];
+	node [label="\N"];
+	Package	 [height=0.5,
+		pos="39.456,108.29",
+		width=1.1013];
+	"Init script"	 [height=0.5,
+		pos="92.732,63.76",
+		width=1.2818];
+	Package -> "Init script"	 [pos="e,73.14,80.137 58.389,92.466 60.632,90.591 62.955,88.65 65.286,86.701"];
+	Service	 [height=0.5,
+		pos="98.261,18.149",
+		width=1.0471];
+	"Init script" -> Service	 [pos="e,96.056,36.344 94.917,45.733 94.929,45.637 94.941,45.54 94.952,45.444"];
+}

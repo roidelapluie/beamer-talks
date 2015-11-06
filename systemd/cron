@@ -1,0 +1,11 @@
+AMQP_BROKER_HOST=10.1.40.19
+MAILTO="sysadmin@example.com"
+ORACLE_HOME="/opt/example/part/python-oracle"
+PG_HOSTNAME="10.1.30.10"
+PG_NAME="example"
+WS_URL=https://prod.example.com/ws/input
+LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/example/lib"
+CUPS_HOSTNAME="10.1.40.1"
+LOGGING_HOST="10.0.50.16"
+LOGGING_PORT="5544"
+0 * * * * /opt/example/bin/cron-hourly

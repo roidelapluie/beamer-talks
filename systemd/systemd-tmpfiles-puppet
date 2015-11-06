@@ -1,0 +1,15 @@
+augeas {
+  "tmpfiles.d-${path}":
+    context => "/files/etc/tmpfiles.d/my.conf/*[path = '${path}']",
+    changes => [
+      "set type 'd'",
+      "set gid '${group}'",
+      "set uid '${owner}'",
+      "set mode '${mode}'",
+    ],
+}
+exec {"systemd-tmpfiles-${path}":
+  command  => '/usr/bin/systemd-tmpfiles --create',
+  creates  => $path,
+  requires => Augeas["tmpfiles.d-${path}"],
+}

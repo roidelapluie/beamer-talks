@@ -102,5 +102,5 @@
 \frame[b]{%
     \largepic{#2}
 \begin{center}\Huge{}\ctr{#5}\end{center}
-\flushright\minuscule{\color{#1}Licensed under a Creative Commons #4 License\\#3}
+\flushright\minuscule{\color{#1}\ifthenelse{\equal{#4}{}}{}{Licensed under a Creative Commons #4 License\\}\ifthenelse{\equal{#3}{}}{}{#3}}
 }}

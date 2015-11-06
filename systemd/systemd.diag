@@ -1,0 +1,10 @@
+digraph G {
+bgcolor="transparent"
+Package [color="white", style=filled]
+"Unit file" [color="white", style=filled]
+"systemctl daemon-reload" [color="white", style=filled]
+Service [color="white", style=filled]
+Package  -> Service [color=white]
+"Unit file" -> "systemctl daemon-reload" [color=white]
+"systemctl daemon-reload" -> Service [color=white]
+}
